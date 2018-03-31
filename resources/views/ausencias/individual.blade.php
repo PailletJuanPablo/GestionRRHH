@@ -28,7 +28,7 @@
                                 <small>Cantidad de Inasistencias: {{$ausencias->count()}}</small>
                          
                             </div>
-                            <div class="body">
+                            <div class="body table-responsive">
                                     <table class="table table-responsive table-striped">
                                         <thead>
                                             <th>Fecha de Inasistencia</th>

@@ -14,7 +14,7 @@ class Act2 extends Migration
     public function up()
     {
         Schema::table('ausencias', function (Blueprint $table) {
-            $table->integer('tipos_ausencias_id');
+            $table->integer('tipos_ausencias_id')->unsigned();
             $table->foreign('tipos_ausencias_id')->references('id')->on('tipos_ausencias');
         });
     }

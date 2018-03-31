@@ -22,6 +22,8 @@ class UpdateEmpleadosTable extends Migration
 
         Schema::table('ausencias', function (Blueprint $table) {
             $table->string('tipo_ausencia');	
+            $table->string('fecha_ausencia')->change();
+            
 
         });
 

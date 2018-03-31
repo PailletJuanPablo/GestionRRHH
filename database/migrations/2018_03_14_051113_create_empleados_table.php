@@ -21,14 +21,6 @@ class CreateEmpleadosTable extends Migration
         });
 
 
-        Schema::create('empleados', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('apellido_nombre');
-            $table->integer('antiguedad');
-            $table->integer('condiciones_id');
-            $table->foreign('condiciones_id')->references('id')->on('condiciones');
-            $table->softDeletes();
-        });
     }
 
     /**

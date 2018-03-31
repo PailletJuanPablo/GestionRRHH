@@ -17,7 +17,7 @@ class CreateAusenciasTable extends Migration
             $table->increments('id');
             $table->softDeletes();
             $table->timestamps();
-            $table->integer('empleados_id');
+            $table->integer('empleados_id')->unsigned();
             $table->foreign('empleados_id')->references('id')->on('empleados');
             $table->date('fecha_ausencia');	
             $table->boolean('justificado');	

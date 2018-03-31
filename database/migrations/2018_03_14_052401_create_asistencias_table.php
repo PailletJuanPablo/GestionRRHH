@@ -16,7 +16,7 @@ class CreateAsistenciasTable extends Migration
         Schema::create('asistencias', function (Blueprint $table) {
             $table->softDeletes();
             $table->increments('id');
-            $table->integer('empleados_id');
+            $table->integer('empleados_id')->unsigned();
             $table->foreign('empleados_id')->references('id')->on('empleados');
             $table->date('fecha_asistencia');	
             $table->time('horario_entrada');	
