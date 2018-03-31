@@ -3,13 +3,10 @@
 @section('title', 'Listado de Tipos de Ausencias')
 
 @section('content')
-<div class="card"> 
-<div class="content">
-<a href="{{ URL::to('tipo/create') }}" type="button" class="btn btn-block btn-lg btn-primary waves-effect">CREAR NUEVA AUSENCIA</a>
+<div class="row"> 
+<a href="{{ URL::to('tipo/create') }}" type="button" class="btn btn-block btn-lg btn-primary waves-effect">CREAR NUEVO TIPO DE LICENCIA</a>
 </div>
-</div>
-
-
+<br>
        <div class="card"> 
                  <div class="header">
 Tipos de Licencias

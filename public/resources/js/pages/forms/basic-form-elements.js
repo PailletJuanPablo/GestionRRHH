@@ -1,4 +1,6 @@
 $(function () {
+    moment.locale('es');
+
     //Textare auto growth
     autosize($('textarea.auto-growth'));
 
@@ -10,10 +12,15 @@ $(function () {
     });
 
     $('.datepicker').bootstrapMaterialDatePicker({
-        format: 'dddd DD MMMM YYYY',
+        format: 'dddd - DD/MM/YYYY',
         clearButton: true,
+        clearText:'Limpiar',
+        nowButton:true,
+        nowText:'Ir a Hoy',
+        cancelText:'Cancelar',
         weekStart: 1,
-        time: false
+        time: false,
+        lang:'fr',
     });
 
     $('.timepicker').bootstrapMaterialDatePicker({

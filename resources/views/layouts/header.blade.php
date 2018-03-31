@@ -147,6 +147,12 @@
                         </a>
                     </li>
 
+                    <li class="{{ Request::path() == 'ausencias/create' ? 'active' : '' }}" >
+                        <a href="{{ route('ausencias.create') }}">
+                            <i class="material-icons">playlist_add</i>
+                            <span>Registrar Ausencia</span>
+                        </a>
+                    </li>
 
 
                     <li class="{{ Request::path() == 'tipo' ? 'active' : '' }}"> 

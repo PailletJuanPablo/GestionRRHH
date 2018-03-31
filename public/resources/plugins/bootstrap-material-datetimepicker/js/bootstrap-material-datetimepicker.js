@@ -3,7 +3,66 @@
    var pluginName = "bootstrapMaterialDatePicker";
    var pluginDataName = "plugin_" + pluginName;
 
-   moment.locale('en');
+   moment.locale('fr', {
+      months : 'enero_febrero_marzo_abril_mayo_junio_julio_agosto_septiembre_octubre_noviembre_diciembre'.split('_'),
+      monthsShort : 'ene_feb_mar_abr_may_jun_jul_ago_sept_oct_nov._dic'.split('_'),
+      monthsParseExact : true,
+      weekdays : 'Domingo_Lunes_Martes_Miercoles_Jueves_Viernes_Sábado'.split('_'),
+      weekdaysShort : 'dom._lun._mar._mie._jue._vie._sab.'.split('_'),
+      weekdaysMin : 'Di_Lu_Ma_Me_Je_Ve_Sa'.split('_'),
+      weekdaysParseExact : true,
+      longDateFormat : {
+          LT : 'HH:mm',
+          LTS : 'HH:mm:ss',
+          L : 'DD/MM/YYYY',
+          LL : 'D MMMM YYYY',
+          LLL : 'D MMMM YYYY HH:mm',
+          LLLL : 'dddd D MMMM YYYY HH:mm'
+      },
+      calendar : {
+          sameDay : '[Aujourd’hui à] LT',
+          nextDay : '[Demain à] LT',
+          nextWeek : 'dddd [à] LT',
+          lastDay : '[Hier à] LT',
+          lastWeek : 'dddd [dernier à] LT',
+          sameElse : 'L'
+      },
+      relativeTime : {
+          future : 'dans %s',
+          past : 'il y a %s',
+          s : 'quelques secondes',
+          m : 'une minute',
+          mm : '%d minutes',
+          h : 'une heure',
+          hh : '%d heures',
+          d : 'un jour',
+          dd : '%d jours',
+          M : 'un mois',
+          MM : '%d mois',
+          y : 'un an',
+          yy : '%d ans'
+      },
+      dayOfMonthOrdinalParse : /\d{1,2}(er|e)/,
+      ordinal : function (number) {
+          return number + (number === 1 ? 'er' : 'e');
+      },
+      meridiemParse : /PD|MD/,
+      isPM : function (input) {
+          return input.charAt(0) === 'M';
+      },
+      // In case the meridiem units are not separated around 12, then implement
+      // this function (look at locale/id.js for an example).
+      // meridiemHour : function (hour, meridiem) {
+      //     return /* 0-23 hour, given meridiem token and hour 1-12 */ ;
+      // },
+      meridiem : function (hours, minutes, isLower) {
+          return hours < 12 ? 'PD' : 'MD';
+      },
+      week : {
+          dow : 1, // Monday is the first day of the week.
+          doy : 4  // The week that contains Jan 4th is the first week of the year.
+      }
+  });
 
    function Plugin(element, options)
    {
@@ -17,7 +76,7 @@
       this.element = element;
       this.$element = $(element);
 
-      this.params = {date: true, time: true, format: 'YYYY-MM-DD', minDate: null, maxDate: null, currentDate: null, lang: 'en', weekStart: 0, shortTime: false, clearButton: false, nowButton: false, cancelText: 'Cancel', okText: 'OK', clearText: 'Clear', nowText: 'Now', switchOnClick: false};
+      this.params = {date: true, time: true, format: 'YYYY-MM-DD', minDate: null, maxDate: null, currentDate: null, lang: 'fr', weekStart: 0, shortTime: false, clearButton: false, nowButton: false, cancelText: 'Cancel', okText: 'OK', clearText: 'Clear', nowText: 'Now', switchOnClick: false};
       this.params = $.fn.extend(this.params, options);
 
       this.name = "dtp_" + this.setName();

@@ -4,7 +4,7 @@
 @section('content')
 
 <div class="card"> 
-        <div class="header">
+        <div class="header bg-blue">
 <h2>Agregar Nuevo Tipo de Licencia</h2><br  /> </div>
 
 <div class="body">
