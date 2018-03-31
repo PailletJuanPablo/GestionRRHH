@@ -1,0 +1,19 @@
+/* ------------------------------------------ */
+/* ############### 3.1 Alerts ############### */
+/* ------------------------------------------ */
+
+.alert {
+  border-width: 0;
+  border-radius: 0;
+  padding: 15px 20px;
+  position: relative;
+
+  .close { opacity: .25; }
+}
+
+.alert-icon {
+  opacity: .95;
+  line-height: 0;
+  margin-right: 10px;
+  position: relative;
+}

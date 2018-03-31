@@ -1,0 +1,75 @@
+/* ------------------------------------------------- */
+/* ############### 3.7 Form Layoyuts ############### */
+/* ------------------------------------------------- */
+
+.form-layout-footer {
+  .btn {
+    padding: 12px 20px;
+  }
+}
+
+/***** FORM LAYOUT 2 & 3 *****/
+.form-layout-2,
+.form-layout-3 {
+  .form-group {
+    position: relative;
+    border: 1px solid $gray-400;
+    padding: 20px 20px;
+    margin-bottom: 0;
+    height: 100%;
+    @include transition($transition-base);
+  }
+
+  .form-group-active {
+    background-color: $gray-100;
+  }
+
+  .form-control-label {
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    display: block;
+  }
+
+  .form-control {
+    border: 0;
+    padding: 0;
+    background-color: transparent;
+    color: $gray-800;
+    @include border-radius(0);
+    font-weight: 500;
+  }
+
+  .select2-container--default {
+    .select2-selection--single {
+      background-color: transparent;
+      border-color: transparent;
+      height: auto;
+
+      .select2-selection__rendered {
+        padding: 0;
+        font-weight: 500;
+      }
+
+      .select2-selection__arrow { height: 26px; }
+    }
+  }
+}
+
+/***** FORM LAYOUT 5 *****/
+.form-layout-5 {
+  padding: 30px;
+
+  .form-control-label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0;
+
+    span { display: inline-block; }
+
+    @include media-breakpoint-up(sm) {
+      justify-content: flex-end;
+    }
+  }
+}

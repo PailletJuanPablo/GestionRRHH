@@ -1,0 +1,571 @@
+/***** TOOLTIP AND POPOVER *****/
+.tooltip-static-demo {
+  .tooltip {
+    z-index: 1;
+    opacity: 1;
+    position: relative;
+    display: inline-block;
+    margin: 0 10px;
+  }
+
+  .bs-tooltip-top,
+  .bs-tooltip-bottom {
+    .arrow {
+      left: 50%;
+      margin-left: -2px;
+    }
+  }
+
+  .bs-tooltip-left,
+  .bs-tooltip-right {
+    margin-top: 5px;
+
+    .arrow {
+      top: 50%;
+      margin-top: -3px;
+    }
+  }
+}
+
+.popover-static-demo {
+  .popover {
+    z-index: 1;
+    opacity: 1;
+    position: relative;
+    display: inline-block;
+    margin: 0 10px;
+  }
+
+  .bs-popover-top,
+  .bs-popover-bottom {
+    .arrow {
+      left: 50%;
+      margin-left: -5px;
+    }
+  }
+
+  .bs-popover-left,
+  .bs-popover-right {
+    margin-top: 5px;
+
+    .arrow {
+      top: 50%;
+      margin-top: -5px;
+    }
+  }
+}
+
+/***** DASHBOARD PAGE *****/
+.shortcut-icon {
+  height: 145px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border: 1px solid theme-color('primary');
+
+  > div { text-align: center; }
+
+  span {
+    display: block;
+    margin-top: 5px;
+  }
+
+  i {
+    line-height: 0;
+    font-size: 64px;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: theme-color('primary');
+    color: #fff;
+  }
+}
+
+.card-calendar {
+  .ui-datepicker {
+    margin-top: 0;
+    max-width: none;
+    border: 0;
+  }
+
+  .ui-datepicker-calendar {
+    width: 100%;
+  }
+}
+
+.card-tab {
+  .card-header {
+    padding: 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  .card-body { padding: 0; }
+
+  .nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 45px;
+    width: 45px;
+    color: #fff;
+    border-right: 1px solid rgba(#fff,.2);
+    font-size: 21px;
+
+    &:first-child { border-left: 1px solid rgba(#fff,.2); }
+
+    &:hover,
+    &:focus { background-color: darken(theme-color('primary'), 5%); }
+
+    &.active {
+      background-color: #fff;
+      color: theme-color('primary');
+    }
+  }
+
+  .card-tab-label {
+    color: $gray-800;
+    font-weight: 700;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 15px;
+    margin-bottom: 0;
+  }
+
+  .media {
+    align-items: center;
+    padding: 12px 15px;
+    color: $body-color;
+    border-top: 1px solid $gray-300;
+
+    &:hover,
+    &:focus {
+      background-color: $gray-200;
+    }
+
+    img {
+      width: 50px;
+      @include border-radius(100%);
+    }
+  }
+
+  .media-body {
+    margin-left: 15px;
+    h6 {
+      font-size: 14px;
+      color: $gray-800;
+      margin-bottom: 3px;
+    }
+
+    p {
+      margin-bottom: 0;
+      font-size: 12px;
+    }
+  }
+
+  .comment-list {
+    .media { align-items: flex-start; }
+    .media-body h6 { margin-bottom: 5px; }
+  }
+}
+
+/***** MAILBOX PAGE *****/
+.card-mailbox {
+  border-color: theme-color('primary');
+
+  .card-header {
+    padding: 0;
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 45px;
+      padding: 0 20px;
+      color: #fff;
+      border-right: 1px solid rgba(#fff,.2);
+
+      &:hover,
+      &:focus { background-color: darken(theme-color('primary'), 5%); }
+
+      &.active {
+        background-color: #fff;
+        color: theme-color('primary');
+      }
+
+      &.nav-back {
+        padding: 0 15px !important;
+        display: none;
+      }
+    }
+  }
+
+  .card-body {
+    padding: 0;
+    height: 600px;
+    position: relative;
+  }
+
+  &.show-msg {
+    @include media-breakpoint-down(sm) {
+      .card-header {
+        .nav-link.nav-back { display: flex; }
+      }
+      .mailbox-body { display: block; }
+    }
+  }
+}
+
+.mailbox-left {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 40;
+
+  @include media-breakpoint-up(md) {
+    width: 260px;
+    border-right: 1px solid theme-color('primary');
+  }
+
+  @include media-breakpoint-up(lg) {
+    width: 300px;
+  }
+
+  .input-group {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 15px;
+    border-bottom: 1px solid theme-color('primary');
+
+    .form-control {
+      border-right: 0;
+      &:focus,
+      &:active {
+        + .input-group-btn .btn { border-color: $input-focus-border-color; }
+      }
+    }
+
+    .input-group-btn {
+      margin-left: 0;
+      .btn {
+        background-color: #fff;
+        border: 1px solid $gray-300;
+        border-left: 0;
+        color: $gray-500;
+      }
+    }
+  }
+
+  .mailbox-list {
+    position: absolute;
+    top: 71px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: auto;
+
+    .media {
+      padding: 15px;
+      color: $body-color;
+
+      + .media { border-top: 1px solid $gray-300; }
+
+      &:hover,
+      &:focus {
+        background-color: $gray-200;
+      }
+    }
+  }
+}
+
+.mailbox-body {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  padding: 15px;
+  overflow-y: auto;
+  display: none;
+  z-index: 50;
+  background-color: #fff;
+
+  @include media-breakpoint-up(md) {
+    display: block;
+    left: 260px;
+  }
+
+  @include media-breakpoint-up(lg) {
+    left: 300px;
+  }
+}
+
+.mailbox-body-header {
+  border-top: 1px solid $gray-300;
+  border-bottom: 1px solid $gray-300;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+
+  &:first-child {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0;
+  }
+
+  .nav {
+    font-size: 24px;
+    margin-top: 15px;
+    margin-bottom: 0;
+    line-height: 0;
+
+    .nav-link {
+       color: $gray-500;
+       padding-left: 5px;
+       padding-right: 5px;
+
+       &:hover,
+       &:focus {
+         color: theme-color('primary');
+       }
+    }
+  }
+
+  @include media-breakpoint-up(sm) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .nav { margin-top: 0; }
+  }
+}
+
+
+/***** CHAT PAGE *****/
+.card-chat-contact {
+  border-color: theme-color('primary');
+  .card-body { padding: 0; }
+
+  .media {
+    align-items: center;
+    padding: 10px 15px;
+    color: $body-color;
+
+    + .media { border-top: 1px solid $gray-300; }
+
+    &:hover,
+    &:focus {
+      background-color: $gray-200;
+    }
+  }
+}
+
+
+/***** EDIT PROFILE PAGE *****/
+
+.list-group-skills {
+  .list-group-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    a {
+      color: $gray-600;
+      font-size: 16px;
+      line-height: 0;
+
+      &:hover,
+      &:focus { color: $gray-700; }
+    }
+  }
+}
+
+
+/***** FILE MANAGER PAGE *****/
+.nav-file-manager {
+  flex-direction: column;
+
+  .nav-link {
+    background-color: $gray-200;
+    position: relative;
+    padding-left: 40px;
+
+    &::before {
+      content: '\f434';
+      font-family: 'Ionicons';
+      font-size: 20px;
+      position: absolute;
+      top: 3px;
+      left: 10px;
+    }
+
+    + .nav-link { margin-top: 1px; }
+
+    &:hover,
+    &:focus {
+      background-color: $gray-300;
+    }
+
+    &.active {
+      background-color: theme-color('primary');
+      color: #fff;
+    }
+  }
+}
+
+.file-manager-header {
+  @include media-breakpoint-up(md) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .btn {
+    min-width: 40px;
+    height: 40px;
+
+    i {
+      font-size: 18px;
+      line-height: 0;
+    }
+  }
+
+  > div:last-child {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+
+    .btn {
+      min-width: none;
+
+      div { width: 40px; }
+      i { font-size: 20px; }
+    }
+
+    @include media-breakpoint-up(md) {
+      margin-top: 0;
+    }
+  }
+}
+
+.file-manager-icon {
+  color: $body-color;
+
+  > div {
+    margin-bottom: 10px;
+    border: 1px solid $gray-300;
+    background-color: #fff;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 96px;
+    @include transition($transition-base);
+
+    i { line-height: 0; }
+  }
+
+  h6 {
+    font-size: 12px;
+    text-align: center;
+  }
+
+  &:hover,
+  &:focus {
+    color: theme-color('primary');
+    > div { border-color: theme-color('primary'); }
+  }
+}
+
+/***** FORUM LIST PAGE *****/
+.forum-list-header {
+  margin-left: 0;
+  margin-right: 0;
+
+  > div {
+    background-color: theme-color('primary');
+    color: #fff;
+    height: 40px;
+    display: flex;
+    align-items: center;
+
+    &:not(:first-child) {
+      display: none;
+
+      @include media-breakpoint-up(sm) {
+        display: flex;
+      }
+    }
+  }
+}
+
+.forum-list-item {
+  margin-left: 0;
+  margin-right: 0;
+  padding: 15px 0;
+  background-color: $gray-200;
+
+  @include media-breakpoint-up(sm) {
+    padding: 0;
+  }
+
+  + .forum-list-item { margin-top: 1px; }
+
+  > div {
+    + div { margin-top: 5px; }
+    @include media-breakpoint-up(sm) {
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
+  }
+}
+
+
+/***** SIGNUP / SIGNIN PAGES *****/
+.signpanel-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include media-breakpoint-up(sm) {
+    padding: 20px 0;
+  }
+}
+
+.signbox {
+  width: 400px;
+  background-color: #fff;
+
+  &.signup { width: 500px; }
+}
+
+.signbox-header {
+  padding: 30px 0;
+  text-align: center;
+  background-color: theme-color('primary');
+
+  h2 {
+    color: #fff;
+    font-weight: 300;
+  }
+
+  p { color: rgba(#fff, 0.8); }
+}
+
+.signbox-body {
+  padding: 20px;
+  background-color: $gray-100;
+
+  @include media-breakpoint-up(sm) {
+    padding: 40px;
+  }
+}
