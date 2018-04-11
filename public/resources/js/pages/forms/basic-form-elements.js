@@ -23,6 +23,19 @@ $(function () {
         lang:'fr',
     });
 
+
+    $('.fechaIngreso').bootstrapMaterialDatePicker({
+        format: 'YYYY-MM-DD',
+        clearButton: true,
+        clearText:'Limpiar',
+        nowButton:true,
+        nowText:'Ir a Hoy',
+        cancelText:'Cancelar',
+        weekStart: 1,
+        time: false,
+        lang:'fr',
+    });
+
     $('.timepicker').bootstrapMaterialDatePicker({
         format: 'HH:mm',
         clearButton: true,

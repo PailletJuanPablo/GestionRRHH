@@ -6,8 +6,12 @@
 
      
                 <div class="card">
-                        <div class="header">
-                <h2 class="title">Viendo ausencias del Empleado {{$empleado->apellido_nombre}}</h2><br>
+                        <div class="header bg-teal">
+                <h3 class="title"> {{$empleado->apellido_nombre}}</h3><br>
+            </div>
+            <div class="body">
+<p> Antiguedad del empleado: {{$empleado->antiguedad()}} años.</p>
+<p> Días correspondientes de vacaciones por ley: {{$empleado->diasDisponibles()}} días. </p>
             </div>
         </div>
     

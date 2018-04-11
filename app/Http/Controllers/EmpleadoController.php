@@ -6,6 +6,7 @@ use App\Empleado;
 use Illuminate\Http\Request;
 use App\Condicion;
 use App\Ausencia;
+use Carbon\Carbon;
 
 class EmpleadoController extends Controller
 {
@@ -49,6 +50,10 @@ class EmpleadoController extends Controller
     public function store(Request $request)
     {
         $empleado = Empleado::create($request->all());
+        $condiciones = Condicion::all();
+        $empleados = Empleado::all();
+        $this->$empleados = $empleados;
+        return view('empleados.add',['condiciones'=>$condiciones,'empleados'=>$empleados]);
     }
 
     /**

@@ -22,7 +22,7 @@
                                         <tr>
                                             <td>{{$empleado->id}}</td>
                                             <td>{{$empleado->apellido_nombre}}  </td>
-                                            <td>{{$empleado->antiguedad}}</td>
+                                            <td>{{$empleado->antiguedad()}} años</td>
                                             <td>{{$empleado->condicion->nombre}}</td>
                                             <td><a href="{{ URL::to('empleados/' . $empleado->id) }}">Ver Ficha</td>
                                         </tr>
