@@ -166,12 +166,19 @@
                     </li>
 
 
+                    <li class="{{ Request::path() == 'ausencias/create' ? 'active' : '' }}" >
+                        <a href="{{ route('ausencias.create') }}">
+                            <i class="material-icons">playlist_add</i>
+                            <span>Registrar Ausencia</span>
+                        </a>
+                    </li>
+
 
                  
                     
                     <li class="{{ Route::is('vacaciones.*') ? 'active' : null }}"> 
                             <a href="javascript:void(0);" class="menu-toggle">
-                                <i class="material-icons">assignment</i>
+                                <i class="material-icons">event_available</i>
                                 <span>Vacaciones</span>
                             </a>
                             <ul class="ml-menu">
@@ -213,13 +220,7 @@
 
 
 
-                    <li class="{{ Request::path() == 'ausencias/create' ? 'active' : '' }}" >
-                        <a href="{{ route('ausencias.create') }}">
-                            <i class="material-icons">playlist_add</i>
-                            <span>Registrar Ausencia</span>
-                        </a>
-                    </li>
-
+              
 
                     <li class="{{ Request::path() == 'tipo' ? 'active' : '' }}"> 
                         <a href="javascript:void(0);" class="menu-toggle">
