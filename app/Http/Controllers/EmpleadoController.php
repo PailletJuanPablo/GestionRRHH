@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Condicion;
 use App\Ausencia;
 use Carbon\Carbon;
-
+use App\DiasTomados;
 class EmpleadoController extends Controller
 {
 
@@ -25,7 +25,7 @@ class EmpleadoController extends Controller
     public function index()
     {
         $empleados = Empleado::all();
-        return view('empleados.list',['empleados'=>$empleados]);
+        return view('dashboard',['empleados'=>$empleados]);
     }
 
     /**
@@ -68,7 +68,10 @@ class EmpleadoController extends Controller
     $empleado = Empleado::find($id);
       $ausencias = Ausencia::with("tipo")->where('empleados_id',$id)->get();
       $ausencias = $ausencias->groupBy('tipo.nombre');
-   return view('ausencias.individual',['empleado'=>$empleado, 'ausencias'=>$ausencias,'empleados'=>$empleados]);
+      $diasTomados = DiasTomados::where('empleados_id',$id)->get();
+  // return $diasTomados;
+   
+      return view('ausencias.individual',['empleado'=>$empleado, 'ausencias'=>$ausencias,'empleados'=>$empleados,'diasTomados'=>$diasTomados]);
   // return response(['empleado'=>$empleado, 'ausencias'=>$ausencias]);
 
 

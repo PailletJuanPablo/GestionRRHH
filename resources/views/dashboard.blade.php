@@ -2,107 +2,57 @@
 @section('title', 'Registrar Ausencia')
 
 @section('content')
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <a href="">
+            <div class="">
+                <div class="info-box hover-zoom-effect">
+                    <div class="icon bg-pink">
+                        <i class="material-icons">money</i>
+                    </div>
+                    <div class="content">
+                        <div class="text"> Actualizar fecha de Pago de Haberes</div>
+                        <div class="number">Clic aquí</div>
+                    </div>
+                </div>
 
-<div class="row">
-        <div class="col-lg-3 col-sm-6">
-            <div class="card">
-                <div class="content">
-                    <div class="row">
-                        <div class="col-xs-5">
-                            <div class="icon-big icon-warning text-center">
-                                <i class="ti-server"></i>
-                            </div>
+            </div> </a>
+
+
+            <a href="">
+                <div class="">
+                    <div class="info-box hover-zoom-effect">
+                        <div class="icon bg-teal">
+                            <i class="material-icons">assignment</i>
                         </div>
-                        <div class="col-xs-7">
-                            <div class="numbers">
-                                <p>Total de Datos Cargados</p>
-                                0
-                            </div>
+                        <div class="content">
+                            <div class="text"> Cargar nuevo acto público</div>
+                            <div class="number">Clic aquí</div>
                         </div>
                     </div>
-                    <div class="footer">
-                        <hr />
-                        <div class="stats">
-                            <i class="ti-reload"></i> Actualizado Recién
+
+                </div> </a>
+
+
+                <a href="">
+                    <div class="">
+                        <div class="info-box hover-zoom-effect">
+                            <div class="icon bg-blue">
+                                <i class="material-icons">account_balance_wallet</i>
+                            </div>
+                            <div class="content">
+                                <div class="text"> Actualizar fecha de Pago de Incentivos</div>
+                                <div class="number">Clic aquí</div>
+                            </div>
                         </div>
-                    </div>
+    
+                    </div> </a>
+
+
+
+        
                 </div>
             </div>
         </div>
-        <div class="col-lg-3 col-sm-6">
-            <div class="card">
-                <div class="content">
-                    <div class="row">
-                        <div class="col-xs-5">
-                            <div class="icon-big icon-success text-center">
-                                <i class="ti-email"></i>
-                            </div>
-                        </div>
-                        <div class="col-xs-7">
-                            <div class="numbers">
-                                <p>Enviar Email a Usuario</p>
-                        
-                            </div>
-                        </div>
-                    </div>
-                    <div class="footer">
-                        <hr />
-                        <div class="stats">
-                           
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-sm-6">
-            <div class="card">
-                <div class="content">
-                    <div class="row">
-                        <div class="col-xs-5">
-                            <div class="icon-big icon-danger text-center">
-                                <i class="ti-pulse"></i>
-                            </div>
-                        </div>
-                        <div class="col-xs-7">
-                            <div class="numbers">
-                                <p>Ausencias Cargadas</p>
-                                XX
-                            </div>
-                        </div>
-                    </div>
-                    <div class="footer">
-                        <hr />
-                        <div class="stats">
-                            <i class="ti-timer"></i> Consultado Recién
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-sm-6">
-            <div class="card">
-                <div class="content">
-                    <div class="row">
-                        <div class="col-xs-5">
-                            <div class="icon-big icon-info text-center">
-                                <i class="ti-user"></i>
-                            </div>
-                        </div>
-                        <div class="col-xs-7">
-                            <div class="numbers">
-                                <p>Empleados</p>
-                                NA
-                            </div>
-                        </div>
-                    </div>
-                    <div class="footer">
-                        <hr />
-                        <div class="stats">
-                            <i class="ti-reload"></i> Actualizado recien
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 @endsection

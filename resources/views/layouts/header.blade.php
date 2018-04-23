@@ -66,7 +66,7 @@
             <div class="navbar-header">
                 <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                 <a href="javascript:void(0);" class="bars"></a>
-                <a class="navbar-brand" href="index.html">DDNA - GESTIÓN EMPLEADOS</a>
+                <a class="navbar-brand" href="{{ route('empleados.index') }}">DDNA - GESTIÓN EMPLEADOS</a>
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
@@ -98,13 +98,19 @@
                     <div class="btn-group user-helper-dropdown">
                         <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                         <ul class="dropdown-menu pull-right">
-                            <li><a href="javascript:void(0);"><i class="material-icons">person</i>Profile</a></li>
-                            <li role="seperator" class="divider"></li>
-                            <li><a href="javascript:void(0);"><i class="material-icons">group</i>Followers</a></li>
-                            <li><a href="javascript:void(0);"><i class="material-icons">shopping_cart</i>Sales</a></li>
-                            <li><a href="javascript:void(0);"><i class="material-icons">favorite</i>Likes</a></li>
-                            <li role="seperator" class="divider"></li>
-                            <li><a href="javascript:void(0);"><i class="material-icons">input</i>Sign Out</a></li>
+                           
+                            <li class="nav-item dropdown">
+
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                                    {{ __('Salir') }}
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                        </li>
                         </ul>
                     </div>
                 </div>
@@ -143,9 +149,34 @@
                     <li class="{{ Request::path() == 'empleados/create' ? 'active' : '' }}" >
                         <a href="{{ route('empleados.create') }}">
                             <i class="material-icons">person_add</i>
-                            <span>Añadir Empleado</span>
+                            <span>Registrar Empleado</span>
                         </a>
                     </li>
+
+                    
+                    <li class="{{ Route::is('vacaciones.*') ? 'active' : null }}"> 
+                            <a href="javascript:void(0);" class="menu-toggle">
+                                <i class="material-icons">assignment</i>
+                                <span>Gestión de Vacaciones</span>
+                            </a>
+                            <ul class="ml-menu">
+                                    <li class="{{ Route::is('vacaciones.index') ? 'active' : null }}" >
+                                        <a href="{{ route('vacaciones.index') }}">
+                                            <span>Listar Vacaciones</span>
+                                        </a>
+                                    </li>
+                                    <li class="{{ Request::path() == 'vacaciones/create' ? 'active' : '' }}" >
+                                        <a href="{{ route('vacaciones.create') }}">
+                                            <span>Registar Vacaciones</span>
+                                        </a>
+                                    </li>
+                               
+                            </ul>
+                        </li>
+
+
+
+
 
                     <li class="{{ Request::path() == 'ausencias/create' ? 'active' : '' }}" >
                         <a href="{{ route('ausencias.create') }}">

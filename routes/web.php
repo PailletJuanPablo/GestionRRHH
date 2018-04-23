@@ -21,6 +21,8 @@ Route::resource('empleados','EmpleadoController');
 Route::resource('condiciones','CondicionesController');
 Route::resource('ausencias','AusenciaController');
 Route::resource('tipo','TipoAusenciaController');
+Route::resource('vacaciones','VacacionesController');
+
 Route::get('/prueba',function () {
     return view('prueba');
 });

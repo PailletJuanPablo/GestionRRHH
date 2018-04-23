@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class DiasTomados extends Model
 {
@@ -10,10 +11,19 @@ class DiasTomados extends Model
     protected $table = "dias_tomados";
 
     protected $fillable = [
-        'empleado_id', 'cantidad_dias', 'fecha_inicio','fecha_finalizacion','observaciones',
+        'empleados_id', 'cantidad_dias', 'fecha_inicio','fecha_finalizacion','observaciones',
     ];
     
     public function empleado(){
-        return $this->belongsTo("App\Empleado");
+        return $this->belongsTo("App\Empleado",'empleados_id');
+    }
+
+    public function diasHabiles()
+    {
+        $dias_totales = intval($this->cantidad_dias);
+        $semanas = round($dias_totales / 7);
+        $numero = $semanas * 2;
+        $dias_habiles = $dias_totales-$numero;
+        return $dias_habiles;
     }
 }

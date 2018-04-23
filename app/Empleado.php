@@ -37,8 +37,13 @@ class Empleado extends Model
     {
         $fecha_ingreso = $this->fecha_ingreso;
         $hoy = Carbon::now();
-        //echo $date1->diffInYears($date2);   
         return $hoy->diffInYears( Carbon::parse($fecha_ingreso));
+    }
+
+    public function diasTomados()
+    {
+        return $this->hasMany('App\DiasTomados');
+
     }
 
 

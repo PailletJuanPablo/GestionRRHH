@@ -12,6 +12,12 @@
             <div class="body">
 <p> Antiguedad del empleado: {{$empleado->antiguedad()}} años.</p>
 <p> Días correspondientes de vacaciones por ley: {{$empleado->diasDisponibles()}} días. </p>
+<p> Días tomados: 
+    @foreach ($diasTomados as $dia)
+    {{$dia->cantidad_dias}} días. </p>
+
+    @endforeach
+
             </div>
         </div>
     
