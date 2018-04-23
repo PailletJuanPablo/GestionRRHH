@@ -48,7 +48,11 @@ return $ausencias;
     public function store(Request $request)
     {
         $ausencia = Ausencia::create($request->all());
-        return $ausencia;
+        $empleados = Empleado::all();
+        $tipos = TipoAusencia::all();
+      //  return $ausencia;
+      return view('dashboard', ['empleados' => $empleados,'tipos'=>$tipos]);
+
     }
 
     /**
@@ -60,7 +64,6 @@ return $ausencias;
     public function show(Ausencia $ausencia)
     {
         $ausencias = Ausencia::with("empleado","tipo")->find($ausencia);
-return $ausencias;
     }
 
     /**
@@ -69,9 +72,14 @@ return $ausencias;
      * @param  \App\Ausencia  $ausencia
      * @return \Illuminate\Http\Response
      */
-    public function edit(Ausencia $ausencia)
+    public function edit($id)
     {
-        //
+        $empleados = Empleado::all();
+        $empleado = Empleado::find($id);
+        $tipos = TipoAusencia::all();
+
+        return view('ausencias.addempleadoausencia',['empleados'=>$empleados,'empleado'=>$empleado,'tipos'=>$tipos]);
+
     }
 
     /**
@@ -81,9 +89,16 @@ return $ausencias;
      * @param  \App\Ausencia  $ausencia
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Ausencia $ausencia)
+    public function update(Request $request, $id)
     {
-        //
+        $ausencia = Ausencia::create($request->all());
+
+       // $empleado->update($request->all());
+
+        $empleados = Empleado::all();
+       //return $ausencia;
+      return view('dashboard', ['empleados' => $empleados]);
+
     }
 
     /**

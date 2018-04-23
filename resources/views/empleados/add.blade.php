@@ -30,17 +30,7 @@
   </div>
 
 
-  <div class="form-group">
-      <label for="condiciones_id">Condición:</label>
-                <select name="condiciones_id" class="form-control show-tick ">
-        
-                  @foreach ($condiciones as $condicion)
 
-                  <option value="{{$condicion->id}}">{{$condicion->nombre}}</option>
-                  @endforeach
-
-                </select>
-  </div>
 
   <div class="form-group">    
                 <button type="submit" class="btn btn-block btn-lg btn-info waves-effect" >Crear Empleado</button>

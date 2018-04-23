@@ -14,7 +14,7 @@
 Route::get('/','EmpleadoController@index');
 
 Auth::routes();
-Route::resource('escritorio', 'EscritorioController');
+Route::resource('escritorio', 'EscritorioController@index');
 
 Route::get('/home', 'EmpleadoController@index')->name('home');
 Route::resource('empleados','EmpleadoController');
@@ -22,9 +22,11 @@ Route::resource('condiciones','CondicionesController');
 Route::resource('ausencias','AusenciaController');
 Route::resource('tipo','TipoAusenciaController');
 Route::resource('vacaciones','VacacionesController');
+Route::resource('pdf','GenerarPdfController');
 
-Route::get('/prueba',function () {
+Route::get('prueba',function () {
     return view('prueba');
 });
+
 
 

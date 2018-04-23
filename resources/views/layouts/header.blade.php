@@ -120,13 +120,28 @@
             <div class="menu">
                 <ul class="list">
                     <li class="header">MENÚ PRINCIPAL</li>
-                    <li class="{{ Request::segment(1) === 'empleados' && Request::path() != 'empleados/create' ? 'active' : null }}"> 
+
+                    <li class="{{ Route::is('empleados.index') ? 'active' : null }}" >
+                            <a href="{{ route('empleados.index') }}">
+                                <i class="material-icons">person_add</i>
+                                <span>Escritorio</span>
+                            </a>
+                        </li>
+
+
+                    <li class="{{ Route::is('empleados.show') ? 'active' : null }}"> 
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">person_pin</i>
                             <span>Lista de Empleados</span>
                         </a>
                         <ul class="ml-menu">
+
+                                
+
+
+
                             <li>
+                                   
                                
                                 @foreach($empleados as $emp)
         
@@ -219,7 +234,7 @@
             <!-- Footer -->
             <div class="legal">
                 <div class="copyright">
-                    &copy; 2016 - 2017 <a href="javascript:void(0);">Developed with ♥ by PailletJP</a>.
+                    &copy; 2018  <a href="javascript:void(0);">Developed with ♥ by PailletJP</a>.
                 </div>
                 <div class="version">
                     <b>Version: </b> 0.0.1

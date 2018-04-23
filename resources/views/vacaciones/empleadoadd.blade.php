@@ -5,24 +5,24 @@
 @section('content')
 <div class="card"> 
 
-<div class="header bg-cyan">
-<h2>Registar vacaciones</h2>
+<div class="header bg-orange">
+<h2>Registrar Vacaciones del Empleado {{$empleado->apellido_nombre}}</h2>
 </div>
 <div class="body"> 
-<form  method="post" action="{{ route('vacaciones.store') }}">
+<form  method="post" action="{{ route('vacaciones.update',$empleado->id) }}">
   {{csrf_field()}}
-  <input name="_method" type="hidden" value="POST">
+  <input name="_method" type="hidden" value="PUT">
 
-  <div class="form-group form-float">
+  <div class="form-group form-float" style="display: none">
 <label for="empleado"> Seleccione empleado </label>
         <div class="form-group">
 
                 <select name="empleados_id" class="form-control dropdown selectpicker ">
               
-                  @foreach ($empleados as $empleado)
+             
               
                   <option value="{{$empleado->id}}">{{$empleado->apellido_nombre}}</option>
-                  @endforeach
+                 
               
                 </select>
                 </div>
