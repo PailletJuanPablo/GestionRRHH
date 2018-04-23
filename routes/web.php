@@ -23,6 +23,7 @@ Route::resource('ausencias','AusenciaController');
 Route::resource('tipo','TipoAusenciaController');
 Route::resource('vacaciones','VacacionesController');
 Route::resource('pdf','GenerarPdfController');
+Route::resource('horas','HoraExtraController');
 
 Route::get('prueba',function () {
     return view('prueba');

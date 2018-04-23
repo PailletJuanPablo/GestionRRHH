@@ -136,6 +136,12 @@
                         </a>
                         <ul class="ml-menu">
 
+                            <li class="{{ Request::path() == 'empleados/create' ? 'active' : '' }}" >
+                                <a href="{{ route('empleados.create') }}">
+                                    <i class="material-icons">person_add</i>
+                                    <span>Registrar Empleado</span>
+                                </a>
+                            </li>
                                 
 
 
@@ -161,18 +167,12 @@
 
 
 
-                    <li class="{{ Request::path() == 'empleados/create' ? 'active' : '' }}" >
-                        <a href="{{ route('empleados.create') }}">
-                            <i class="material-icons">person_add</i>
-                            <span>Registrar Empleado</span>
-                        </a>
-                    </li>
-
+                 
                     
                     <li class="{{ Route::is('vacaciones.*') ? 'active' : null }}"> 
                             <a href="javascript:void(0);" class="menu-toggle">
                                 <i class="material-icons">assignment</i>
-                                <span>Gestión de Vacaciones</span>
+                                <span>Vacaciones</span>
                             </a>
                             <ul class="ml-menu">
                                     <li class="{{ Route::is('vacaciones.index') ? 'active' : null }}" >
@@ -183,6 +183,26 @@
                                     <li class="{{ Request::path() == 'vacaciones/create' ? 'active' : '' }}" >
                                         <a href="{{ route('vacaciones.create') }}">
                                             <span>Registar Vacaciones</span>
+                                        </a>
+                                    </li>
+                               
+                            </ul>
+                        </li>
+
+                        <li class="{{ Route::is('horas.*') ? 'active' : null }}"> 
+                            <a href="javascript:void(0);" class="menu-toggle">
+                                <i class="material-icons">timer</i>
+                                <span>Horas Extra</span>
+                            </a>
+                            <ul class="ml-menu">
+                                    <li class="{{ Route::is('horas.index') ? 'active' : null }}" >
+                                        <a href="{{ route('horas.index') }}">
+                                            <span>Listar Horas Extra</span>
+                                        </a>
+                                    </li>
+                                    <li class="{{ Route::is('horas.create') ? 'active' : null }}" >
+                                        <a href="{{ route('horas.create') }}">
+                                            <span>Registar Horas Extras</span>
                                         </a>
                                     </li>
                                
@@ -204,7 +224,7 @@
                     <li class="{{ Request::path() == 'tipo' ? 'active' : '' }}"> 
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">assignment</i>
-                            <span>Gestión de Licencias</span>
+                            <span>Gestión </span>
                         </a>
                         <ul class="ml-menu">
                                 <li class="{{ Request::path() == 'tipo/create' ? 'active' : '' }}" >

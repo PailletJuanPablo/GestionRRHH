@@ -2,18 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Ausencia;
+use App\HoraExtra;
 use App\Empleado;
-use App\TipoAusencia;
 use Illuminate\Http\Request;
 
-class AusenciaController extends Controller
+class HoraExtraController extends Controller
 {
-
-    public function __construct(){
-        $this->middleware('auth');
-
-    }
     /**
      * Display a listing of the resource.
      *
@@ -21,11 +15,10 @@ class AusenciaController extends Controller
      */
     public function index()
     {
+        $horas = HoraExtra::all();
         $empleados = Empleado::all();
 
-        $empleadosAusencias = Empleado::with("ausencias")->get();
-
-        return view ("ausencias.list",["empleados"=>$empleados,"empleadosAusencias"=>$empleadosAusencias]);
+        return view("horasextras.list",['horas'=>$horas,'empleados'=>$empleados]);
     }
 
     /**
@@ -36,9 +29,8 @@ class AusenciaController extends Controller
     public function create()
     {
         $empleados = Empleado::all();
-        $tipos = TipoAusencia::all();
+        return view("horasextras.add",['empleados'=>$empleados]);
 
-        return view('ausencias.add', ['empleados' => $empleados,'tipos'=>$tipos]);
     }
 
     /**
@@ -49,67 +41,60 @@ class AusenciaController extends Controller
      */
     public function store(Request $request)
     {
-        $ausencia = Ausencia::create($request->all());
+        $horanuevo = HoraExtra::create($request->all());
         $empleados = Empleado::all();
-        $tipos = TipoAusencia::all();
-      //  return $ausencia;
-      return view('dashboard', ['empleados' => $empleados,'tipos'=>$tipos]);
+        $horas = HoraExtra::all();
 
+        return view("horasextras.list",['horas'=>$horas,'empleados'=>$empleados]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Ausencia  $ausencia
+     * @param  \App\HoraExtra  $horaExtra
      * @return \Illuminate\Http\Response
      */
-    public function show(Ausencia $ausencia)
+    public function show(HoraExtra $horaExtra)
     {
-        $ausencias = Ausencia::with("empleado","tipo")->find($ausencia);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Ausencia  $ausencia
+     * @param  \App\HoraExtra  $horaExtra
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit( $id)
     {
         $empleados = Empleado::all();
         $empleado = Empleado::find($id);
-        $tipos = TipoAusencia::all();
-
-        return view('ausencias.addempleadoausencia',['empleados'=>$empleados,'empleado'=>$empleado,'tipos'=>$tipos]);
-
+        return view ("horasextras.edit",['empleados'=>$empleados,'empleado'=>$empleado]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Ausencia  $ausencia
+     * @param  \App\HoraExtra  $horaExtra
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $ausencia = Ausencia::create($request->all());
-
-       // $empleado->update($request->all());
-
+        $horaExtra = HoraExtra::create($request->all());
         $empleados = Empleado::all();
-       //return $ausencia;
-      return view('dashboard', ['empleados' => $empleados]);
+        $horas = HoraExtra::all();
 
+        return view("horasextras.list",['horas'=>$horas,'empleados'=>$empleados]);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Ausencia  $ausencia
+     * @param  \App\HoraExtra  $horaExtra
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Ausencia $ausencia)
+    public function destroy(HoraExtra $horaExtra)
     {
         //
     }

@@ -18,6 +18,8 @@
                         <tr>
                                 <th width="50%">Apellido y Nombre</th>
                                 <th>Acciones</th>
+                                <th>Ver Ficha</th>
+
                               
                         </tr>
                     </thead>
@@ -26,12 +28,14 @@
 @foreach ($empleados as $empleado)
 <tr>
    <td> {{$empleado->apellido_nombre}}</td>
-   <td> <a href="{{ route('ausencias.edit',$empleado->id) }}" class="btn btn-primary btn-sm"> Registrar Ausencia </a>
-   <a href="{{ route('vacaciones.edit',$empleado->id) }}" class="btn bg-orange btn-sm"> Registrar Vacaciones </a>
-   <a href="{{ route('empleados.show',$empleado->id) }}" class="btn bg-red btn-sm"> Ver Ficha </a>
+   <td> <a href="{{ route('ausencias.edit',$empleado->id) }}" class="btn btn-primary btn-block"> Registrar Ausencia </a>
+   <a href="{{ route('vacaciones.edit',$empleado->id) }}" class="btn bg-orange btn-block"> Registrar Vacaciones </a>
+   <a href="{{ route('horas.edit',$empleado->id) }}" class="btn bg-teal btn-block"> Registrar Horas Extra </a>
+
 
 </td>
-
+<td>    <a href="{{ route('empleados.show',$empleado->id) }}" class="btn bg-red btn-block"> Ver Ficha </a>
+</td>
 </tr>
 @endforeach
                     </tbody>

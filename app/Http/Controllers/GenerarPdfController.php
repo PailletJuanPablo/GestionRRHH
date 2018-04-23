@@ -54,9 +54,27 @@ class GenerarPdfController extends Controller
           $ausencias = $ausencias->groupBy('tipo.nombre');
           $diasTomados = DiasTomados::where('empleados_id',$id)->get();
       // return $diasTomados;
+    
+      
+      $totalVacaciones = 0;
+    
+      foreach ($diasTomados as $dia){
+          $totalVacaciones = $totalVacaciones + $dia->cantidad_dias; 
+      }
+    
+    
+      $semanas = round($totalVacaciones / 7);
+           $numero = $semanas * 2;
+           $dias_habiles = $totalVacaciones-$numero;
+        
+    
+    
+      $diasDisponibles =  $empleado->diasDisponibles() - $dias_habiles;
+    //return $diasDisponibles;
+    
+    $pdf = PDF::loadView('pdf.individual',['empleado'=>$empleado, 'ausencias'=>$ausencias,'empleados'=>$empleados,'diasTomados'=>$diasTomados,'diasDisponibles'=>$diasDisponibles,'diasHabiles'=>$dias_habiles]);
        
          // return response(['empleado'=>$empleado, 'ausencias'=>$ausencias,'empleados'=>$empleados,'diasTomados'=>$diasTomados]);
-         $pdf = PDF::loadView('pdf.individual', ['empleado'=>$empleado, 'ausencias'=>$ausencias,'empleados'=>$empleados,'diasTomados'=>$diasTomados]);
     
           return $pdf->stream('informe.pdf');
          

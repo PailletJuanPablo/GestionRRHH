@@ -6,8 +6,8 @@
 @section('content')
 
        <div class="card">
-           <div class="header">
-               Vacaciones de Empleados
+           <div class="header bg-blue">
+              <h3 class="title"> Vacaciones de Empleados </h3>
            </div>
            <div class="body">
                         <table class="table responsive">

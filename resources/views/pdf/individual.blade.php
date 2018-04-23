@@ -156,14 +156,32 @@
       </div>
       <h1>Reporte de Empleado {{$empleado->apellido_nombre}}</h1>
       <div id="company" class="clearfix">
-        <div><p> Días hábiles tomados de vacaciones:
-     @foreach ($diasTomados as $dia)
-                {{$dia->cantidad_dias}} días. 
-            
-                @endforeach</p></div>
-       <div> 
-                <p> Antiguedad del empleado: {{$empleado->antiguedad()}} años.</p> </div>
-<br>
+        <div><p> 
+            Antiguedad del empleado:
+           {{$empleado->antiguedad()}} años </p>
+              
+              </div>
+
+              <div><p> 
+                  Días de vacaciones por ley:
+                  {{$empleado->diasDisponibles()}} días </p>
+                    
+                    </div>
+     
+                    
+              <div><p> 
+                  Días tomados:
+                  {{$diasHabiles}} días </p>
+                    
+                    </div>
+
+                    <div><p> 
+                        Días disponibles de vacaciones:
+                        {{$diasDisponibles}} días </p>
+                          
+                          </div>
+
+                <br>
     </header>
     <main>
 
