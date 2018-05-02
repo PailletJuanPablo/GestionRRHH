@@ -2,11 +2,8 @@
 
 @section('content')
 <div class="login-box">
-    <div class="logo">
-  
-        <a href="javascript:void(0);">DD
-            <b>NA</b>
-        </a>
+    <div class="logo" style="text-align: center">
+  <img src="{{ asset('resources/images/logo.png')}}" width="300">
         <small>Sistema de Gestión de Asistencia</small>
       
     </div>

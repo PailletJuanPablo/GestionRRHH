@@ -47,9 +47,9 @@ class Empleado extends Model
     }
 
 
-    public function diasDisponibles(){
+    public function diasDisponibles() {
         $años_antiguedad = $this->antiguedad();
-        if ($años_antiguedad <= 5 ) {
+        if ($años_antiguedad < 5 ) {
             return 15;
         };
         if (($años_antiguedad >= 5) && ($años_antiguedad <= 10)  ) {
