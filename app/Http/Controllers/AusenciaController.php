@@ -10,7 +10,8 @@ use Illuminate\Http\Request;
 class AusenciaController extends Controller
 {
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->middleware('auth');
 
     }
@@ -25,7 +26,7 @@ class AusenciaController extends Controller
 
         $empleadosAusencias = Empleado::with("ausencias")->get();
 
-        return view ("ausencias.list",["empleados"=>$empleados,"empleadosAusencias"=>$empleadosAusencias]);
+        return view("ausencias.list", ["empleados" => $empleados, "empleadosAusencias" => $empleadosAusencias]);
     }
 
     /**
@@ -38,7 +39,7 @@ class AusenciaController extends Controller
         $empleados = Empleado::all();
         $tipos = TipoAusencia::all();
 
-        return view('ausencias.add', ['empleados' => $empleados,'tipos'=>$tipos]);
+        return view('ausencias.add', ['empleados' => $empleados, 'tipos' => $tipos]);
     }
 
     /**
@@ -49,11 +50,40 @@ class AusenciaController extends Controller
      */
     public function store(Request $request)
     {
-        $ausencia = Ausencia::create($request->all());
+        // $ausencia = Ausencia::create($request->all());
         $empleados = Empleado::all();
         $tipos = TipoAusencia::all();
-      //  return $ausencia;
-      return view('dashboard', ['empleados' => $empleados,'tipos'=>$tipos]);
+        //  return $ausencia;
+
+        // return $request;
+
+//return $request->fecha_ausencia;
+        if ($request->especial === "on") {
+            $ausencia = Ausencia::create(
+                ["empleados_id" => $request->empleados_id,
+                    "tipos_ausencias_id" => $request->tipos_ausencias_id,
+                    "justificado" => $request->justificado,
+                    "observaciones" => $request->observaciones,
+                    "ausencia_multiple" => 1,
+                    "inicio_ausencia" => $request->fecha_inicio,
+                    "finalizacion_ausencia" => $request->fecha_finalizacion,
+                    "dias_habiles_ausencia" => $request->dias_habiles_ausencia]
+            );
+
+        } else {
+
+            $ausencia = Ausencia::create(
+                ["empleados_id" => $request->empleados_id,
+                    "tipos_ausencias_id" => $request->tipos_ausencias_id,
+                    "justificado" => $request->justificado,
+                    "fecha_ausencia" => $request->fecha_ausencia,
+                    "observaciones" => $request->observaciones,
+                    "ausencia_multiple" => 0,
+                    "dias_habiles_ausencia" => 1]
+            );
+        }
+
+        return view('dashboard', ['empleados' => $empleados, 'tipos' => $tipos]);
 
     }
 
@@ -65,7 +95,7 @@ class AusenciaController extends Controller
      */
     public function show(Ausencia $ausencia)
     {
-        $ausencias = Ausencia::with("empleado","tipo")->find($ausencia);
+        $ausencias = Ausencia::with("empleado", "tipo")->find($ausencia);
     }
 
     /**
@@ -80,7 +110,7 @@ class AusenciaController extends Controller
         $empleado = Empleado::find($id);
         $tipos = TipoAusencia::all();
 
-        return view('ausencias.addempleadoausencia',['empleados'=>$empleados,'empleado'=>$empleado,'tipos'=>$tipos]);
+        return view('ausencias.addempleadoausencia', ['empleados' => $empleados, 'empleado' => $empleado, 'tipos' => $tipos]);
 
     }
 
@@ -93,13 +123,38 @@ class AusenciaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $ausencia = Ausencia::create($request->all());
+       // $ausencia = Ausencia::create($request->all());
 
-       // $empleado->update($request->all());
+        // $empleado->update($request->all());
 
         $empleados = Empleado::all();
-       //return $ausencia;
-      return view('dashboard', ['empleados' => $empleados]);
+        //return $ausencia;
+     if ($request->especial === "on") {
+            $ausencia = Ausencia::create(
+                ["empleados_id" => $request->empleados_id,
+                    "tipos_ausencias_id" => $request->tipos_ausencias_id,
+                    "justificado" => $request->justificado,
+                    "observaciones" => $request->observaciones,
+                    "ausencia_multiple" => 1,
+                    "inicio_ausencia" => $request->fecha_inicio,
+                    "finalizacion_ausencia" => $request->fecha_finalizacion,
+                    "dias_habiles_ausencia" => $request->dias_habiles_ausencia]
+            );
+
+        } else {
+
+            $ausencia = Ausencia::create(
+                ["empleados_id" => $request->empleados_id,
+                    "tipos_ausencias_id" => $request->tipos_ausencias_id,
+                    "justificado" => $request->justificado,
+                    "fecha_ausencia" => $request->fecha_ausencia,
+                    "observaciones" => $request->observaciones,
+                    "ausencia_multiple" => 0,
+                    "dias_habiles_ausencia" => 1]
+            );
+        }
+
+        return view('dashboard', ['empleados' => $empleados]);
 
     }
 

@@ -14,7 +14,10 @@ class Ausencia extends Model
 
 
     protected $fillable = [
-        'empleados_id', 'tipos_ausencias_id', 'periodo_ausencia', 'descripcion','justificado','fecha_ausencia', 'observaciones'
+        'empleados_id', 'tipos_ausencias_id',
+         'periodo_ausencia', 'descripcion','justificado','fecha_ausencia',
+          'observaciones','inicio_ausencia','finalizacion_ausencia','dias_habiles_ausencia',
+          "ausencia_multiple",
     ];
 
     public function empleado()

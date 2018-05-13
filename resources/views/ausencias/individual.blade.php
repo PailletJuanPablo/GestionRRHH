@@ -135,7 +135,14 @@
                                                 @foreach($ausencias as $ausencia)
 
                                             <tr>
-                                                <td>{{$ausencia->fecha_ausencia}}</td>
+                                                <td>
+                                                    @if ($ausencia->ausencia_multiple == 1)
+                                                   Desde {{$ausencia->inicio_ausencia}}
+hasta {{$ausencia->finalizacion_ausencia}}
+                                                    @else
+                                                    {{$ausencia->fecha_ausencia}}
+                                                    @endif
+                                                </td>
                                                 <td>{{$ausencia->observaciones}}  </td>
                                                 <td>@if ($ausencia->justificado == 1)
                                                         SI

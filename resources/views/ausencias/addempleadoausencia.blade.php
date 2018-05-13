@@ -25,8 +25,7 @@
     
       </select>
 </div>
-
-  <div class="form-group">
+<div class="form-group">
 
   <label for="tipos_ausencias_id">Seleccione tipo de ausencia:</label>
 
@@ -72,9 +71,51 @@
 
     <textarea  class="form-control" name="observaciones" placeholder="Ingrese observaciones aquí" > </textarea>
   </div>
+
+  
+
 </div>
 
+<div class="form-group">
+      <p>
+          <label for="master-checkbox">
+            Registrar un período de ausencia
+          </label>
+          <input id="master-checkbox" type="checkbox" name="especial" class="form-control" style="opacity: 1;
+          left: 2%!important;
+          width: 10%;
+          height: 5%;
+          display: block;">
+        </p>
 
+        <div class="depends-on-master-checkbox form-control" style="height: 250px">
+        
+            
+          <p style="margin-top:5%">
+            <label for="inicio_periodo_ausencia">
+              Inicio del período de ausencia
+            </label>
+            <input type="text" class="datepicker form-control depends-on-master-checkbox" name="fecha_inicio" placeholder="Clic aquí para seleccionar fecha...">
+          </p>
+
+          <p style="">
+              <label for="inicio_periodo_ausencia">
+                Finalización del período de ausencia
+              </label>
+              <input type="text" class="datepicker form-control depends-on-master-checkbox" name="fecha_finalizacion" placeholder="Clic aquí para seleccionar fecha...">
+            </p>
+
+            <p class="depends-on-master-checkbox">
+                <div class=" depends-on-master-checkbox">
+                    <p class="depends-on-master-checkbox">Dias hábiles de ausencia</p>
+
+                    <input type="text"  class="form-control depends-on-master-checkbox" name="dias_habiles_ausencia"  >
+                </div>
+                
+              </p>
+     
+    </div>
+  </div>
 
 
 

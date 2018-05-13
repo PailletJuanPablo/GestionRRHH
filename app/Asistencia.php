@@ -11,7 +11,7 @@ class Asistencia extends Model
     protected $dates = ['deleted_at'];
 
     protected $fillable = [
-        'empleados_id', 'fecha', 'horario_entrada', 'horario_salida'
+        'empleados_id', 'fecha', 'horario_entrada', 'horario_salida','ausencia_multiple'
     ];
 
     public function asistencias()

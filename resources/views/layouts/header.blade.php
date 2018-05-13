@@ -9,7 +9,7 @@
     <!-- Favicon-->
     <!-- Bootstrap Material Datetime Picker Css -->
     <link href="{{ asset('resources/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css')}}" rel="stylesheet"></link>
-    
+
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
@@ -295,6 +295,7 @@
     <!-- Bootstrap Core Js -->
     <script src="{{ asset('resources/plugins/bootstrap/js/bootstrap.js')}}" ></script>
 
+    <script src="{{ asset('resources/plugins/jquery.dependent.fields.js')}}" ></script>
 
     <!-- Select Plugin Js -->
     <script src="{{ asset('resources/plugins/bootstrap-select/js/bootstrap-select.js')}}" ></script>
@@ -336,6 +337,15 @@
             <script src="{{ asset('resources/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js')}}"></script>
             <script src="{{ asset('resources/js/admin.js')}}" ></script>
 
+
+
+            
+
+
+            <script>
+                    $('.depends-on-master-checkbox').dependsOn('#master-checkbox');
+                    $('#dependent-dropdown').dependsOn('#master-dropdown', ['Canada', 'United States']);
+                   </script>
 </body>
 
 </html>
