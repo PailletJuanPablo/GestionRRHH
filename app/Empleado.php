@@ -16,7 +16,7 @@ class Empleado extends Model
 
     protected $fillable = [
         'apellido_nombre', 'antiguedad', 'condiciones_id', 'cargo','fecha_ingreso',  'area',
-        'horario','domicilio','tel','cuil','situacion_revista'
+        'horario','domicilio','tel','cuil','situacion_revista','fecha_ingreso'
     ];
 
     public function condicion()
@@ -49,7 +49,8 @@ class Empleado extends Model
 
 
     public function diasDisponibles() {
-        $años_antiguedad = $this->antiguedad();
+    
+          $años_antiguedad = $this->antiguedad();
         if ($años_antiguedad < 5 ) {
             return 15;
         };

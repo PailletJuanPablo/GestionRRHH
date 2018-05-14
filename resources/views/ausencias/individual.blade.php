@@ -67,7 +67,7 @@
                     </div>
                     <div class="content">
                         <div class="text">Días disponibles de vacaciones</div>
-                        <div class="number"> {{$diasDisponibles}} días</div>
+                        <div class="number"> {{$empleado->diasDisponibles()}} días</div>
                     </div>
                 </div>
 
