@@ -26,7 +26,7 @@
                                             <td>{{$vacacion->empleado->apellido_nombre}}</td>
                                             <td>{{$vacacion->fecha_inicio}}  </td>
                                             <td>{{$vacacion->fecha_finalizacion}} </td>
-                                            <td>{{$vacacion->diasHabiles()}}</td>
+                                            <td>{{$vacacion->dias_tomados}}</td>
                                         </tr>
                                        @endforeach
                                 </tbody>

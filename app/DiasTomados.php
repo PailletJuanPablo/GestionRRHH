@@ -12,7 +12,7 @@ class DiasTomados extends Model
 
     protected $fillable = [
         'empleados_id', 'cantidad_dias',
-         'inicio_ausencia','finalizacion_ausencia','observaciones','ausencia_multiple'
+         'fecha_inicio','fecha_finalizacion','observaciones','ausencia_multiple'
     ];
     
     public function empleado(){

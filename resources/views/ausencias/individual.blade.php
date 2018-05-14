@@ -120,7 +120,7 @@
                                 @else
                                 <h5>REMUNERADAS: NO  </h5>
                                 @endif
-                                <small>Cantidad de Inasistencias: {{$ausencias->count()}}</small>
+                                <small>Cantidad de Inasistencias: {{$ausencias->sum("dias_habiles_ausencia")}}</small>
 
                             </div>
                             <div class="body table-responsive">

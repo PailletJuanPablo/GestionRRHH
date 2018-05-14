@@ -35,6 +35,7 @@
 
 </td>
 <td>    <a href="{{ route('empleados.show',$empleado->id) }}" class="btn bg-red btn-block"> Ver Ficha </a>
+    <a href="{{ route('empleados.edit',$empleado->id) }}" class="btn bg-blue btn-block"> Editar Ficha </a>
 </td>
 </tr>
 @endforeach

@@ -56,6 +56,13 @@
               </div>
 
 
+              <div class="form-group">
+                  <div class="form-line">
+                      <label for="cantidad_dias">Días hábiles tomados:</label>
+                
+                    <input type="number" class="form-control" name="cantidad_dias" placeholder="Ingrese días hábiles de vacaciones aquí" >
+                  </div>
+                </div>
 
   <div class="form-group">    
                 <button type="submit" class="btn btn-block btn-lg btn-info waves-effect" >Registrar Vacaciones</button>

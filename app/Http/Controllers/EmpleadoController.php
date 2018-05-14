@@ -52,7 +52,6 @@ class EmpleadoController extends Controller
         $empleado = Empleado::create($request->all());
         $condiciones = Condicion::all();
         $empleados = Empleado::all();
-        $this->$empleados = $empleados;
         return view('empleados.add',['condiciones'=>$condiciones,'empleados'=>$empleados]);
     }
 
@@ -100,9 +99,11 @@ class EmpleadoController extends Controller
      * @param  \App\Empleado  $empleado
      * @return \Illuminate\Http\Response
      */
-    public function edit(Empleado $empleado)
+    public function edit($id)
     {
-        //
+        $empleados = Empleado::all();
+$empleado = Empleado::find($id);
+        return view('empleados.edit',['empleado'=>$empleado, "empleados"=>$empleados]);
     }
 
     /**
@@ -112,9 +113,12 @@ class EmpleadoController extends Controller
      * @param  \App\Empleado  $empleado
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Empleado $empleado)
+    public function update(Request $request,  $id)
     {
-        //
+        $empleado = Empleado::find($id);
+        $empleado->update($request->all());
+        $empleados = Empleado::all();
+        return view('dashboard',['empleados'=>$empleados]);
     }
 
     /**

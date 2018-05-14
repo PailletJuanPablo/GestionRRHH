@@ -44,26 +44,26 @@ class VacacionesController extends Controller
 
       
 
-            $fecha_inicio = $request['fecha_inicio'];
-            $fecha_finalizacion = $request['fecha_finalizacion'];
+         //   $fecha_inicio = $request['fecha_inicio'];
+          //  $fecha_finalizacion = $request['fecha_finalizacion'];
 
             //echo $date1->diffInYears($date2);   
-            $cantidad_dias = ( Carbon::parse($fecha_finalizacion))->diffInDays(Carbon::parse($fecha_inicio));
+          //  $cantidad_dias = ( Carbon::parse($fecha_finalizacion))->diffInDays(Carbon::parse($fecha_inicio));
 
-
+/*
             $vacacion = DiasTomados::create([
                 'empleados_id'=>$request['empleados_id'],
                 'fecha_inicio'=>$fecha_inicio,
                 'fecha_finalizacion'=>$fecha_finalizacion,
                 'cantidad_dias'=>$cantidad_dias,
                 'observaciones'=>$request['observaciones']
-            ]);
+            ]);*/
+            $vacacion = DiasTomados::create($request->all());
+           // return $vacacion;
 
             $empleados = Empleado::all();
         return view("dashboard",['empleados'=>$empleados]);
         
-         // $vacacion = DiasTomados::create($request->all());
-        //return $vacacion;
 
        // calcularDias();
         

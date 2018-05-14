@@ -15,7 +15,8 @@ class Empleado extends Model
 
 
     protected $fillable = [
-        'apellido_nombre', 'antiguedad', 'condiciones_id', 'cargo','fecha_ingreso'
+        'apellido_nombre', 'antiguedad', 'condiciones_id', 'cargo','fecha_ingreso',  'area',
+        'horario','domicilio','tel','cuil','situacion_revista'
     ];
 
     public function condicion()

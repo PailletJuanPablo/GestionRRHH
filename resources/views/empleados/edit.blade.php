@@ -5,50 +5,52 @@
 <div class="card"> 
 
 <div class="header bg-cyan">
-<h2>Agregar Nuevo Empleado</h2>
+<h2>Editar datos del empleado {{$empleado->apellido_nombre}}</h2>
 </div>
 <div class="body"> 
-<form  method="post" action="{{ route('empleados.store') }}">
-  {{csrf_field()}}
-  <input name="_method" type="hidden" value="POST">
+<form  method="post" action="{{ route('empleados.update',$empleado->id) }}">
+        {{csrf_field()}}
 
-  <div class="form-group form-float">
+        <input name="_method" type="hidden" value="PUT">
+      
+
+  <div class="form-group">
+        <label for="apellido_nombre" class="form-label">Apellido y Nombre</label>
 
       <div class="form-line">
-          <input type="text" class="form-control" name="apellido_nombre" >
-          <label for="apellido_nombre" class="form-label">Apellido y Nombre</label>
+          <input type="text" class="form-control" name="apellido_nombre" value="{{$empleado->apellido_nombre}}">
       </div>
   </div>
 
-  <div class="form-group form-float">
+  <div class="form-group ">
+        <label for="cuil" class="form-label">Cuil</label>
 
         <div class="form-line">
-            <input type="text" class="form-control" name="cuil" >
-            <label for="cuil" class="form-label">Cuil</label>
+            <input type="text" class="form-control" name="cuil" value="{{$empleado->cuil}}" >
         </div>
     </div>
 
-    <div class="form-group form-float">
+    <div class="form-group ">
+            <label for="tel" class="form-label">Teléfono</label>
 
             <div class="form-line">
-                <input type="text" class="form-control" name="tel" >
-                <label for="tel" class="form-label">Teléfono</label>
+                <input type="text" class="form-control" name="tel" value="{{$empleado->tel}}">
             </div>
         </div>
 
-        <div class="form-group form-float">
+        <div class="form-group ">
+                <label for="domicilio" class="form-label">Domicilio</label>
 
                 <div class="form-line">
-                    <input type="text" class="form-control" name="domicilio" >
-                    <label for="domicilio" class="form-label">Domicilio</label>
+                    <input type="text" class="form-control" name="domicilio"  value="{{$empleado->domicilio}}" >
                 </div>
             </div>
 
-            <div class="form-group form-float">
+            <div class="form-group ">
+                    <label for="horario" class="form-label">Horario</label>
 
                     <div class="form-line">
-                        <input type="text" class="form-control" name="horario" >
-                        <label for="horario" class="form-label">Horario</label>
+                        <input type="text" class="form-control" name="horario" value="{{$empleado->horario}}">
                     </div>
                 </div>
 
@@ -58,7 +60,8 @@
         <label for="cargo">Cargo:</label>
         <select name="cargo" class="form-control dropdown selectpicker ">
               
-            
+                <option selected value="{{$empleado->cargo}}">{{$empleado->cargo}}</option>
+
                 <option value="Director de Coordinación Operativa">Director de Coordinación Operativa</option>
                 <option value="Oficial Superior">Oficial Superior</option>
                 <option value="Ayudante">Ayudante</option>
@@ -78,7 +81,7 @@
                 <option value="Jefe de Departamento de Promoción">Jefe de Departamento de Promoción</option>
                 <option value="Jefe de Deparmaneto de Control y Obs.">Jefe de Deparmaneto de Control y Obs.</option>
                 <option value="Administrativo Nivel 1">Administrativo Nivel 1</option>
-                <option value="Jefe de Sección">Jefe de Sección</option>
+                <option  value="Jefe de Sección">Jefe de Sección</option>
 
               </select>
       </div>
@@ -90,7 +93,7 @@
         <div class="form-line">
           <label for="antiguedad">Fecha de Incorporación:</label>
   
-          <input type="text" class="fechaIngreso form-control" name="fecha_ingreso" placeholder="Clic aquí para seleccionar fecha...">
+          <input type="text" class="fechaIngreso form-control" name="fecha_ingreso" placeholder="Clic aquí para seleccionar fecha..." value="{{$empleado->fecha_ingreso}}">
         </div>
     </div>
 
@@ -103,7 +106,8 @@
               <select name="situacion_revista" class="form-control dropdown selectpicker ">
                     
                   
-               
+                    <option selected value="{{$empleado->situacion_revista}}">{{$empleado->situacion_revista}}</option>
+
                       <option value="Permanente">Permanente</option>
                       <option value="Suplente">Suplente</option>
                       <option value="Pasantía">Pasantía</option>
@@ -120,7 +124,8 @@
                   <select name="area" class="form-control dropdown selectpicker ">
                         
                       
-                   
+                        <option selected value="{{$empleado->area}}">{{$empleado->area}}</option>
+
                           <option value="Legales">Legales</option>
                           <option value="Promoción">Promoción</option>
                           <option value="UNICEF">UNICEF</option>
