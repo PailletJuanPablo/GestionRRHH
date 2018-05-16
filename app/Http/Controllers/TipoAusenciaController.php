@@ -18,7 +18,6 @@ class TipoAusenciaController extends Controller
         $empleados = Empleado::all();
         $tipos = TipoAusencia::all();
         return view('tiposausencia.list', ['tipos' => $tipos,'empleados'=>$empleados]);
-
     }
 
     /**

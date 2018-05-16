@@ -8,6 +8,7 @@ use App\Condicion;
 use App\Ausencia;
 use Carbon\Carbon;
 use App\DiasTomados;
+use App\HoraExtra;
 class EmpleadoController extends Controller
 {
 
@@ -68,6 +69,7 @@ class EmpleadoController extends Controller
       $ausencias = Ausencia::with("tipo")->where('empleados_id',$id)->get();
       $ausencias = $ausencias->groupBy('tipo.nombre');
       $diasTomados = DiasTomados::where('empleados_id',$id)->get();
+      $horasExtra = HoraExtra::where("empleados_id",$id)->get();
   // return $diasTomados;
 
   
@@ -87,7 +89,10 @@ class EmpleadoController extends Controller
   $diasDisponibles =  $empleado->diasDisponibles() - $dias_habiles;
 //return $diasDisponibles;
 
-     return view('ausencias.individual',['empleado'=>$empleado, 'ausencias'=>$ausencias,'empleados'=>$empleados,'diasTomados'=>$diasTomados,'diasDisponibles'=>$diasDisponibles,'diasHabiles'=>$dias_habiles]);
+     return view('ausencias.individual',['empleado'=>$empleado,
+      'ausencias'=>$ausencias,'empleados'=>$empleados,
+      'diasTomados'=>$diasTomados,'diasDisponibles'=>$diasDisponibles,
+      'diasHabiles'=>$dias_habiles,"horasExtra"=>$horasExtra]);
   //return response(['empleado'=>$empleado, 'ausencias'=>$ausencias,'empleados'=>$empleados,'diasTomados'=>$diasTomados]);
 
 

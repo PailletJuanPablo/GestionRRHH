@@ -18,6 +18,46 @@
 
                     </div>
       
+                    @if ($empleado->lactancia === 1)
+
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                        <div class="info-box-2 bg-lime">
+                            <div class="icon ">
+                                <i class="material-icons">pregnant_woman</i>
+                            </div>
+                            <div class="content">
+                                <div class="text">Tiene Liencia por Lactancia</div>
+                                <div class="number "><h3 class="title">
+                                   Días restantes: {{$empleado->diasLactancia()}} </h3></div>
+                            </div>
+                        </div>
+
+                    </div>
+                    @endif
+
+                 
+
+
+
+                    
+                    @if ($empleado->maternidad === 1)
+
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                        <div class="info-box-2 bg-pink">
+                            <div class="icon ">
+                                <i class="material-icons">child_friendly</i>
+                            </div>
+                            <div class="content">
+                                <div class="text">Tiene Liencia por Maternidad</div>
+                                <div class="number "><h3 class="title">
+                                   Días restantes: {{$empleado->diasMaternidad()}} </h3></div>
+                            </div>
+                        </div>
+
+                    </div>
+                    @endif
     
     
     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
@@ -40,7 +80,7 @@
                         <i class="material-icons">face</i>
                     </div>
                     <div class="content">
-                        <div class="text">Días por Ley</div>
+                        <div class="text">Días de Vacaciones por Año</div>
                         <div class="number">{{$empleado->diasDisponibles()}} días</div>
                     </div>
                 </div>
@@ -59,18 +99,16 @@
                 </div>
 
     </div>
-
     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
             <div class="info-box-3 bg-indigo">
                     <div class="icon">
                         <i class="material-icons">face</i>
                     </div>
                     <div class="content">
-                        <div class="text">Días disponibles de vacaciones</div>
-                        <div class="number"> {{$empleado->diasDisponibles()}} días</div>
+                        <div class="text">Días restantes</div>
+                        <div class="number"> {{$empleado->diasDisponibles() - $diasHabiles}} días</div>
                     </div>
                 </div>
-
     </div>
     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 
@@ -106,6 +144,42 @@
 
                
 
+           
+            @if ($horasExtra->count() > 0)
+
+            <div class="card">
+                    <div class="header bg-cyan">
+                            <h2 class="title">Horas Extras del Empleado</h2>
+                       <h4> Horas Totales Tomadas: {{$horasExtra->sum("cantidad")}}</h4>
+
+                        </div>
+                        <div class="body table-responsive">
+                                <table class="table table-responsive table-striped">
+                                    <thead>
+                                        <th>Fecha de Hora Extra</th>
+                                        <th>Cantidad</th>
+
+                                    </thead>
+                                    <tbody>
+                                            @foreach($horasExtra as $hora)
+
+                                        <tr>
+                                            <td>
+                                          
+                                                {{$hora->fecha}}
+                                             
+                                            </td>
+                                            <td>{{$hora->cantidad}}  </td>
+                                           
+
+                                        </tr>
+                                       @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+    </div>
+   
+    @endif
 
 
 

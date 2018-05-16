@@ -217,6 +217,48 @@
                         </li>
 
 
+                        
+                    <li class="{{ Request::path() == 'maternidad' ? 'active' : '' }}"> 
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">pregnant_woman</i>
+                            <span>Maternidad </span>
+                        </a>
+                        <ul class="ml-menu">
+                                <li class="{{ Request::path() == 'addmaternidad' ? 'active' : '' }}" >
+                                    <a href="{{ route('addmaternidad') }}">
+                                        <span>Agregar nuevo período de maternidad</span>
+                                    </a>
+                                </li>
+                                <li class="{{ Request::path() == 'maternidad' ? 'active' : '' }}" >
+                                    <a href="{{ route('maternidad') }}">
+                                        <span>Listar Licencias por maternidad</span>
+                                    </a>
+                                </li>
+                           
+                        </ul>
+                    </li>
+
+                            
+                    <li class="{{ Request::path() == 'lactancia' ? 'active' : '' }}"> 
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">child_friendly</i>
+                            <span>Lactancia </span>
+                        </a>
+                        <ul class="ml-menu">
+                                <li class="{{ Request::path() == 'addlactancia' ? 'active' : '' }}" >
+                                    <a href="{{ route('addlactancia') }}">
+                                        <span>Agregar nuevo período de lactancia</span>
+                                    </a>
+                                </li>
+                                <li class="{{ Request::path() == 'lactancia' ? 'active' : '' }}" >
+                                    <a href="{{ route('lactancia') }}">
+                                        <span>Listar Licencias por Lactancia</span>
+                                    </a>
+                                </li>
+                           
+                        </ul>
+                    </li>
+
 
 
 

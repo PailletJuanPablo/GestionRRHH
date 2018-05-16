@@ -138,7 +138,13 @@
     
 
 
+            <div class="form-group form-float">
 
+                <div class="form-line">
+                    <input type="text" class="form-control" name="dias_vacaciones_adicionales" >
+                    <label for="dias_vacaciones_adicionales" class="form-label">Días de vacaciones adicionales (Completar si correspondiere)</label>
+                </div>
+            </div>
 
 
 

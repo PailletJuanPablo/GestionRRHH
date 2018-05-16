@@ -93,7 +93,7 @@
         <div class="form-line">
           <label for="antiguedad">Fecha de Incorporación:</label>
   
-          <input type="text" class="fechaIngreso form-control" name="fecha_ingreso" placeholder="Clic aquí para seleccionar fecha..." value="{{$empleado->fecha_ingreso}}">
+          <input type="text" class="fechaIngreso form-control" name="fecha_ingreso" placeholder="Clic aquí para seleccionar fecha...">
         </div>
     </div>
 
@@ -124,8 +124,7 @@
                   <select name="area" class="form-control dropdown selectpicker ">
                         
                       
-                        <option selected value="{{$empleado->area}}">{{$empleado->area}}</option>
-
+                          <option selected value="{{$empleado->area}}">{{$empleado->area}}</option>
                           <option value="Legales">Legales</option>
                           <option value="Promoción">Promoción</option>
                           <option value="UNICEF">UNICEF</option>
@@ -143,6 +142,13 @@
     
 
 
+            <div class="form-group ">
+                <label for="dias_vacaciones_adicionales" class="form-label">Días de vacaciones adicionales (Completar si correspondiere)</label>
+
+                <div class="form-line">
+                    <input type="text" class="form-control" name="dias_vacaciones_adicionales" >
+                </div>
+            </div>
 
 
 

@@ -29,5 +29,11 @@ Route::get('prueba',function () {
     return view('prueba');
 });
 
+Route::get("maternidad","ausenciasespecialescontroller@maternidad")->name("maternidad");
+Route::get("addmaternidad","ausenciasespecialescontroller@agregarMaternidad")->name("addmaternidad");
+Route::post("addmaternidad","ausenciasespecialescontroller@guardarMaternidad")->name("addmaternidad");
 
+Route::get("lactancia","ausenciasespecialescontroller@lactancia")->name("lactancia");
+Route::get("addlactancia","ausenciasespecialescontroller@agregarLactancia")->name("addlactancia");
+Route::post("addlactancia","ausenciasespecialescontroller@guardarLactancia")->name("addlactancia");
 
