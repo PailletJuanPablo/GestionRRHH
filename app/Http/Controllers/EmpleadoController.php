@@ -9,6 +9,8 @@ use App\Ausencia;
 use Carbon\Carbon;
 use App\DiasTomados;
 use App\HoraExtra;
+use App\DiaDisponible;
+use App\Franco;
 class EmpleadoController extends Controller
 {
 
@@ -25,7 +27,7 @@ class EmpleadoController extends Controller
      */
     public function index()
     {
-        $empleados = Empleado::all();
+        $empleados = Empleado::where("activo",1)->get();
         return view('dashboard',['empleados'=>$empleados]);
     }
 
@@ -65,11 +67,12 @@ class EmpleadoController extends Controller
     public function show($id)
     {
         $empleados = Empleado::all();
-    $empleado = Empleado::find($id);
+        $empleado = Empleado::find($id);
       $ausencias = Ausencia::with("tipo")->where('empleados_id',$id)->get();
       $ausencias = $ausencias->groupBy('tipo.nombre');
       $diasTomados = DiasTomados::where('empleados_id',$id)->get();
       $horasExtra = HoraExtra::where("empleados_id",$id)->get();
+      $francos = Franco::where("empleados_id",$id)->get();
   // return $diasTomados;
 
   
@@ -92,7 +95,7 @@ class EmpleadoController extends Controller
      return view('ausencias.individual',['empleado'=>$empleado,
       'ausencias'=>$ausencias,'empleados'=>$empleados,
       'diasTomados'=>$diasTomados,'diasDisponibles'=>$diasDisponibles,
-      'diasHabiles'=>$dias_habiles,"horasExtra"=>$horasExtra]);
+      'diasHabiles'=>$dias_habiles,"horasExtra"=>$horasExtra, "francos"=>$francos]);
   //return response(['empleado'=>$empleado, 'ausencias'=>$ausencias,'empleados'=>$empleados,'diasTomados'=>$diasTomados]);
 
 

@@ -151,6 +151,7 @@
                     <div class="header bg-cyan">
                             <h2 class="title">Horas Extras del Empleado</h2>
                        <h4> Horas Totales Tomadas: {{$horasExtra->sum("cantidad")}}</h4>
+                       <h4> Días de Franco Compensatorio Disponibles: {{$horasExtra->sum("cantidad") / 6}}</h4>
 
                         </div>
                         <div class="body table-responsive">
@@ -180,6 +181,41 @@
     </div>
    
     @endif
+
+
+    @if ($francos->count() > 0)
+
+    <div class="card">
+            <div class="header bg-green">
+                    <h2 class="title">Francos Compensatorios del empleado</h2>
+               <h4> Total de Francos Compensatorios Tomados: {{$francos->count()}}</h4>
+
+                </div>
+                <div class="body table-responsive">
+                        <table class="table table-responsive table-striped">
+                            <thead>
+                                <th>Fecha de Franco</th>
+
+                            </thead>
+                            <tbody>
+                                    @foreach($francos as $franco)
+
+                                <tr>
+                                    <td>
+                                  
+                                        {{$franco->fecha}}
+                                     
+                                    </td>
+                                   
+
+                                </tr>
+                               @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+</div>
+
+@endif
 
 
 

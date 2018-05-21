@@ -15,10 +15,12 @@ class HoraExtraController extends Controller
      */
     public function index()
     {
+
         $horas = HoraExtra::all();
         $empleados = Empleado::all();
 
         return view("horasextras.list",['horas'=>$horas,'empleados'=>$empleados]);
+
     }
 
     /**
@@ -28,6 +30,7 @@ class HoraExtraController extends Controller
      */
     public function create()
     {
+
         $empleados = Empleado::all();
         return view("horasextras.add",['empleados'=>$empleados]);
 
@@ -41,11 +44,13 @@ class HoraExtraController extends Controller
      */
     public function store(Request $request)
     {
+
         $horanuevo = HoraExtra::create($request->all());
         $empleados = Empleado::all();
         $horas = HoraExtra::all();
 
         return view("horasextras.list",['horas'=>$horas,'empleados'=>$empleados]);
+        
     }
 
     /**

@@ -6,7 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Empleado extends Model
+class DiaDisponible extends Model
 {
 
     protected $table = "dias_disponibles";

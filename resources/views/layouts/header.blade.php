@@ -173,6 +173,25 @@
                         </a>
                     </li>
 
+                    <li class="{{ Request::path() == 'francos' ? 'active' : '' }}"> 
+                            <a href="javascript:void(0);" class="menu-toggle">
+                                <i class="material-icons">hourglass_empty</i>
+                                <span>Francos Compensatorios </span>
+                            </a>
+                            <ul class="ml-menu">
+                                    <li class="{{ Request::path() == 'addfranco' ? 'active' : '' }}" >
+                                        <a href="{{ route('addfranco') }}">
+                                            <span>Registrar Franco Compensatorio</span>
+                                        </a>
+                                    </li>
+                                    <li class="{{ Request::path() == 'francos' ? 'active' : '' }}" >
+                                        <a href="{{ route('francos') }}">
+                                            <span>Listar Francos Compensatorios</span>
+                                        </a>
+                                    </li>
+                               
+                            </ul>
+                        </li>
 
                  
                     
@@ -258,6 +277,8 @@
                            
                         </ul>
                     </li>
+
+              
 
 
 

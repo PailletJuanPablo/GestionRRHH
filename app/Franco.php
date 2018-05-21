@@ -4,17 +4,15 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class HoraExtra extends Model
+class Franco extends Model
 {
-    protected $table = "hora_extras";
+    protected $table = "francos_compensatorios";
 
-    protected $fillable = [
+   protected $fillable = [
         'empleados_id', 'fecha', 'cantidad'
     ];
     
     public function empleado() {
         return $this->belongsTo("App\Empleado",'empleados_id');
     }
-
-
 }

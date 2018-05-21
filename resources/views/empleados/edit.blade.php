@@ -150,6 +150,23 @@
                 </div>
             </div>
 
+            
+            <div class="form-group ">
+                    <label for="activo" class="form-label">Empleado Activo</label>
+    
+                    <div class="form-line">
+                        <select  class="form-control" name="activo" >
+                            @if ($empleado->activo == 1)
+                            <option selected value=1>SI</option>
+                            <option  value=0>NO</option>
+                            @else
+                            <option  value=1>SI</option>
+                            <option selected value=0>NO</option>
+                            @endif
+                        </select>
+                    </div>
+                </div>
+    
 
 
 

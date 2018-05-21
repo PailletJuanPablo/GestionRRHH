@@ -37,3 +37,7 @@ Route::get("lactancia","ausenciasespecialescontroller@lactancia")->name("lactanc
 Route::get("addlactancia","ausenciasespecialescontroller@agregarLactancia")->name("addlactancia");
 Route::post("addlactancia","ausenciasespecialescontroller@guardarLactancia")->name("addlactancia");
 
+Route::get("francos","FrancoController@francos")->name("francos");
+Route::get("addfranco","FrancoController@agregarfrancos")->name("addfranco");
+Route::post("addfranco","FrancoController@guardarfrancos")->name("addfranco");
+Route::get("francoid/{id}","FrancoController@agregarfrancosid")->name("francoid");
