@@ -110,24 +110,26 @@
                     </div>
                 </div>
     </div>
-    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="cursor:pointer"> 
 
-            <a target="_blank" href="{{ route('pdf.show',$empleado->id) }}">
+            <a target="_blank" href="{{ route('pdf.show',$empleado->id) }}" style="cursor:pointer">
                     <div class="info-box-2  bg-light-blue ">
                         <div class="icon ">
                             <i class="material-icons">equalizer</i>
                         </div>
                         <div class="content">
                             <div class="text"></div>
-                            <div class="number">Generar Informe</div>
+                            <div class="number" style="cursor:pointer">Generar Informe</div >
                         </div>
                     </div>
                 </a>
             
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+                <!-- 
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="cursor:pointer">
             
-                        <a target="_blank" href="{{ route('pdf.show',$empleado->id) }}">
+                        <a target="_blank" href="{{ route('pdf.show',$empleado->id) }}" style="cursor:pointer">
                                 <div class="info-box-2 bg-pink ">
                                     <div class="icon ">
                                         <i class="material-icons">email</i>
@@ -139,7 +141,7 @@
                                 </div>
                             </a>
             
-                            </div>
+                            </div> -->
             </div>
 
                
