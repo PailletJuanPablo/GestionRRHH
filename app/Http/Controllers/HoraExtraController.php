@@ -99,8 +99,10 @@ class HoraExtraController extends Controller
      * @param  \App\HoraExtra  $horaExtra
      * @return \Illuminate\Http\Response
      */
-    public function destroy(HoraExtra $horaExtra)
+    public function destroy($id)
     {
-        //
+    
+        HoraExtra::destroy($id);
+        return redirect()->back()->withErrors(['Hora Extra Eliminada Correctamente']);
     }
 }

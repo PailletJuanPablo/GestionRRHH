@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Asistencia;
 use Illuminate\Http\Request;
+use App\Ausencia;
 
 class AsistenciaController extends Controller
 {
@@ -59,9 +60,37 @@ class AsistenciaController extends Controller
      * @param  \App\Asistencia  $asistencia
      * @return \Illuminate\Http\Response
      */
-    public function edit(Asistencia $asistencia)
+    public function edit(Request $request)
     {
-        //
+        
+        $empleados = Empleado::all();
+        //return $ausencia;
+     if ($request->especial === "on") {
+            $ausencia = Ausencia::create(
+                ["empleados_id" => $request->empleados_id,
+                    "tipos_ausencias_id" => $request->tipos_ausencias_id,
+                    "justificado" => $request->justificado,
+                    "observaciones" => $request->observaciones,
+                    "ausencia_multiple" => 1,
+                    "inicio_ausencia" => $request->fecha_inicio,
+                    "finalizacion_ausencia" => $request->fecha_finalizacion,
+                    "dias_habiles_ausencia" => $request->dias_habiles_ausencia]
+            );
+
+        } else {
+
+            $ausencia = Ausencia::create(
+                ["empleados_id" => $request->empleados_id,
+                    "tipos_ausencias_id" => $request->tipos_ausencias_id,
+                    "justificado" => $request->justificado,
+                    "fecha_ausencia" => $request->fecha_ausencia,
+                    "observaciones" => $request->observaciones,
+                    "ausencia_multiple" => 0,
+                    "dias_habiles_ausencia" => 1]
+            );
+        }
+
+        return view('dashboard', ['empleados' => $empleados]);
     }
 
     /**
@@ -82,8 +111,10 @@ class AsistenciaController extends Controller
      * @param  \App\Asistencia  $asistencia
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Asistencia $asistencia)
+    public function destroy(Request $request)
     {
-        //
+        $ausenciaEliminar = Ausencia::find($request->id);
+        $ausenciaEliminar->delete();
+        return redirect()->back()->withErrors(['Ausencia Eliminada Correctamente']);
     }
 }

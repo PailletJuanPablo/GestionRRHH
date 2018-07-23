@@ -24,10 +24,10 @@ Route::resource('tipo','TipoAusenciaController');
 Route::resource('vacaciones','VacacionesController');
 Route::resource('pdf','GenerarPdfController');
 Route::resource('horas','HoraExtraController');
+Route::resource('asistencias','AsistenciaController');
+Route::resource('salidas','SalidasParticularesController');
 
-Route::get('prueba',function () {
-    return view('prueba');
-});
+Route::post('eliminarasistencia/{id}','AsistenciaController@destroy')->name("eliminarasistencia");
 
 Route::get("maternidad","ausenciasespecialescontroller@maternidad")->name("maternidad");
 Route::get("addmaternidad","ausenciasespecialescontroller@agregarMaternidad")->name("addmaternidad");

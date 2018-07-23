@@ -24,8 +24,8 @@ class AusenciaController extends Controller
     {
         $empleados = Empleado::all();
 
-        $empleadosAusencias = Empleado::with("ausencias")->get();
-
+    $empleadosAusencias = Ausencia::with("empleado")->with("tipo")->get();
+       // return $empleadosAusencias;
         return view("ausencias.list", ["empleados" => $empleados, "empleadosAusencias" => $empleadosAusencias]);
     }
 

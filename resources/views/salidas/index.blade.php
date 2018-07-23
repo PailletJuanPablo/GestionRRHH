@@ -1,6 +1,6 @@
 
 @extends('layouts.header')
-@section('title', 'Listado de Horas Extras Registradas')
+@section('title', 'Listado de Salidas Particularess Registradas')
 
 @section('content')
 <div class="row"> 
@@ -12,12 +12,13 @@
 </div>
 @endif
 
-    <a href="{{ route('horas.create') }}" type="button" class="btn btn-block btn-lg btn-primary waves-effect">REGISTRAR HORAS EXTRAS</a>
+    <a href="{{ route('salidas.create') }}" type="button" class="btn btn-block btn-lg btn-primary waves-effect">
+        REGISTRAR SALIDA PARTICULAR</a>
     </div>
 <br>
        <div class="card"> 
                  <div class="header bg-teal">
-<h3 class="title"> Horas Extras </h3>
+<h3 class="title"> Salidas Registradas </h3>
                  </div>
             <div class="body">
             <table class="table responsive">
@@ -27,17 +28,15 @@
                                             <th>Fecha</th>
                                             <th>Cantidad de horas</th>
                                             <th>Eliminar</th>
-
-                                          
                                     </tr>
                                 </thead>
                                 <tbody>
-                                        @foreach($horas as $hora)
+                                        @foreach($salidas as $hora)
         
                                         <tr>
                                             <td>{{$hora->empleado->apellido_nombre}}</td>
                                             <td>{{$hora->fecha}}</td>
-                                            <td>{{$hora->cantidad}}</td>
+                                            <td>{{$hora->cantidad_horas}}</td>
                                             <td>
     
                                                      
