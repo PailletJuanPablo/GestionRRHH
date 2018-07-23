@@ -41,13 +41,13 @@
     
                                                      
                                                      <form  
-                                                     onsubmit="return confirm('Estás seguro de eliminar estas horas extras?');" 
-                                                     action="{{route('horas.destroy',$hora->id)}}" method="POST" >
+                                                     onsubmit="return confirm('Estás seguro de eliminar esta salida particular?');" 
+                                                     action="{{route('salidas.destroy',$hora->id)}}" method="POST" >
                                                             @csrf
                                                             <input type="hidden" name="_method" value="DELETE">
 
                                                     <input type="submit"
-                                                        class="btn btn-block btn-lg btn-danger waves-effect" value="Eliminar Horas Extras" >
+                                                        class="btn btn-block btn-lg btn-danger waves-effect" value="Eliminar" >
                                                         
     
                                                      </form>
