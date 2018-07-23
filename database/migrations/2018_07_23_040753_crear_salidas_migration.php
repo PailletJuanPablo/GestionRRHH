@@ -13,7 +13,7 @@ class CrearSalidasMigration extends Migration
      */
     public function up()
     {
-        Schema::create('salidas_particulaes', function (Blueprint $table) {
+        Schema::create('salidas_particulares', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
             $table->integer("cantidad_horas");

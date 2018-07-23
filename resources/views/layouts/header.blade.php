@@ -134,7 +134,7 @@
                         </a>
                         <ul class="ml-menu">
                            <li class="{{ Request::path() == 'salidas.index' ? 'active' : '' }}" >
-                              <a href="{{ route('ausencias.index') }}">
+                              <a href="{{ route('salidas.index') }}">
                               <span>Listado de Salidas Particulares</span>
                               </a>
                            </li>
