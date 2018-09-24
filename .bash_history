@@ -51,3 +51,18 @@ php artisan route:cache
 php artisan config:cache
 ls
 git pull
+ls
+git status
+git add . 
+s
+git commit -m "From remote server"
+git config --global user.email "pailletjuanpablo@gmail.com"
+git config --global user.name "PailletJuanPablo"
+git commit -m "From remote server"
+git add 
+git add . 
+git commit -m "From remote server"
+git push origin master 
+git pull
+php artisan migrate
+git pull
