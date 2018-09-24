@@ -11,6 +11,7 @@ use App\DiasTomados;
 use App\HoraExtra;
 use App\DiaDisponible;
 use App\Franco;
+use App\SalidaParticular;
 class EmpleadoController extends Controller
 {
 
@@ -85,7 +86,7 @@ class EmpleadoController extends Controller
 
   $semanas = round($totalVacaciones / 7);
        $numero = $semanas * 2;
-       $dias_habiles = $totalVacaciones-$numero;
+       $dias_habiles = $totalVacaciones;
     
 
 

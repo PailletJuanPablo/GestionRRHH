@@ -26,6 +26,7 @@ Route::resource('pdf','GenerarPdfController');
 Route::resource('horas','HoraExtraController');
 Route::resource('asistencias','AsistenciaController');
 Route::resource('salidas','SalidasParticularesController');
+Route::get("salidaid/{id}","SalidasParticularesController@edit")->name("salidaid");
 
 Route::post('eliminarasistencia/{id}','AsistenciaController@destroy')->name("eliminarasistencia");
 

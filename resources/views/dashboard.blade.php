@@ -31,8 +31,9 @@
    <td> <a href="{{ route('ausencias.edit',$empleado->id) }}" class="btn btn-primary btn-block"> Registrar Ausencia </a>
    <a href="{{ route('vacaciones.edit',$empleado->id) }}" class="btn bg-orange btn-block"> Registrar Vacaciones </a>
    <a href="{{ route('horas.edit',$empleado->id) }}" class="btn bg-teal btn-block"> Registrar Horas Extra </a>
+   <a href="{{ route('salidaid',$empleado->id) }}" class="btn bg-deep-orange btn-block"> Registrar Salida Particular </a>
 
-   <a href="{{ route('francoid',$empleado->id) }}" class="btn bg-deep-orange        btn-block"> Registrar Franco Compensatorio </a>
+   <a href="{{ route('francoid',$empleado->id) }}" class="btn bg-deep-orange btn-block"> Registrar Franco Compensatorio </a>
 
 </td>
 <td>    <a href="{{ route('empleados.show',$empleado->id) }}" class="btn bg-red btn-block"> Ver Ficha </a>

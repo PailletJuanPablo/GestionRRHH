@@ -92,6 +92,9 @@ class Empleado extends Model
 
     }
 
+    public function salidasParticulares(){
+        return $this->hasMany("App\SalidaParticular",'empleados_id');
+    }
     
 
 }

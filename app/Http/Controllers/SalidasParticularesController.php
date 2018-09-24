@@ -53,7 +53,8 @@ class SalidasParticularesController extends Controller
      */
     public function show($id)
     {
-        //
+    
+
     }
 
     /**
@@ -64,7 +65,9 @@ class SalidasParticularesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $empleados = Empleado::all();
+        $empleado = Empleado::where("id",$id)->first();
+        return view("salidas.addfromempleado",["empleado"=>$empleado,"empleados"=>$empleados]);
     }
 
     /**
@@ -76,7 +79,11 @@ class SalidasParticularesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $empleados = Empleado::all();
+        $salida = SalidaParticular::create($request->all());
+        $salidas = SalidaParticular::with("empleado")->get();
+        return view("salidas.index",["salidas"=>$salidas,"empleados"=>$empleados]);
+
     }
 
     /**
