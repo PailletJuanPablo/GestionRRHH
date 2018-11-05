@@ -49,4 +49,4 @@ Route::post("actualizar_vacaciones", "VacacionesEdicionController@actualizar")->
 
 Route::post("eliminar_vacaciones/{id}", "VacacionesEdicionController@eliminar")->name("eliminar_vacaciones");
 
-Route::get("exportar_pdf", "EmpleadoController@export")->name("exportar_pdf");
+Route::get("generar_excel", "EmpleadoController@export")->name("generar_excel");
