@@ -2,23 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Empleado;
-use Illuminate\Http\Request;
-use App\Condicion;
 use App\Ausencia;
-use Carbon\Carbon;
+use App\Condicion;
 use App\DiasTomados;
-use App\HoraExtra;
-use App\DiaDisponible;
+use App\Empleado;
+use App\Exports\EmpleadoExport;
 use App\Franco;
-use App\SalidaParticular;
+use App\HoraExtra;
+use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+
 class EmpleadoController extends Controller
 {
 
-
-    public function __construct(){
+    public function __construct()
+    {
         $this->middleware('auth');
-
 
     }
     /**
@@ -28,8 +27,8 @@ class EmpleadoController extends Controller
      */
     public function index()
     {
-        $empleados = Empleado::where("activo",1)->get();
-        return view('dashboard',['empleados'=>$empleados]);
+        $empleados = Empleado::where("activo", 1)->get();
+        return view('dashboard', ['empleados' => $empleados]);
     }
 
     /**
@@ -42,7 +41,7 @@ class EmpleadoController extends Controller
         $condiciones = Condicion::all();
         $empleados = Empleado::all();
         $this->$empleados = $empleados;
-        return view('empleados.add',['condiciones'=>$condiciones,'empleados'=>$empleados]);
+        return view('empleados.add', ['condiciones' => $condiciones, 'empleados' => $empleados]);
     }
 
     /**
@@ -56,7 +55,7 @@ class EmpleadoController extends Controller
         $empleado = Empleado::create($request->all());
         $condiciones = Condicion::all();
         $empleados = Empleado::all();
-        return view('empleados.add',['condiciones'=>$condiciones,'empleados'=>$empleados]);
+        return view('empleados.add', ['condiciones' => $condiciones, 'empleados' => $empleados]);
     }
 
     /**
@@ -69,36 +68,31 @@ class EmpleadoController extends Controller
     {
         $empleados = Empleado::all();
         $empleado = Empleado::find($id);
-      $ausencias = Ausencia::with("tipo")->where('empleados_id',$id)->get();
-      $ausencias = $ausencias->groupBy('tipo.nombre');
-      $diasTomados = DiasTomados::where('empleados_id',$id)->get();
-      $horasExtra = HoraExtra::where("empleados_id",$id)->get();
-      $francos = Franco::where("empleados_id",$id)->get();
-  // return $diasTomados;
+        $ausencias = Ausencia::with("tipo")->where('empleados_id', $id)->get();
+        $ausencias = $ausencias->groupBy('tipo.nombre');
+        $diasTomados = DiasTomados::where('empleados_id', $id)->get();
+        $horasExtra = HoraExtra::where("empleados_id", $id)->get();
+        $francos = Franco::where("empleados_id", $id)->get();
+        // return $diasTomados;
 
-  
-  $totalVacaciones = 0;
+        $totalVacaciones = 0;
 
-  foreach ($diasTomados as $dia){
-      $totalVacaciones = $totalVacaciones + $dia->cantidad_dias; 
-  }
+        foreach ($diasTomados as $dia) {
+            $totalVacaciones = $totalVacaciones + $dia->cantidad_dias;
+        }
 
+        $semanas = round($totalVacaciones / 7);
+        $numero = $semanas * 2;
+        $dias_habiles = $totalVacaciones;
 
-  $semanas = round($totalVacaciones / 7);
-       $numero = $semanas * 2;
-       $dias_habiles = $totalVacaciones;
-    
-
-
-  $diasDisponibles =  $empleado->diasDisponibles() - $dias_habiles;
+        $diasDisponibles = $empleado->diasDisponibles() - $dias_habiles;
 //return $diasDisponibles;
 
-     return view('ausencias.individual',['empleado'=>$empleado,
-      'ausencias'=>$ausencias,'empleados'=>$empleados,
-      'diasTomados'=>$diasTomados,'diasDisponibles'=>$diasDisponibles,
-      'diasHabiles'=>$dias_habiles,"horasExtra"=>$horasExtra, "francos"=>$francos]);
-  //return response(['empleado'=>$empleado, 'ausencias'=>$ausencias,'empleados'=>$empleados,'diasTomados'=>$diasTomados]);
-
+        return view('ausencias.individual', ['empleado' => $empleado,
+            'ausencias' => $ausencias, 'empleados' => $empleados,
+            'diasTomados' => $diasTomados, 'diasDisponibles' => $diasDisponibles,
+            'diasHabiles' => $dias_habiles, "horasExtra" => $horasExtra, "francos" => $francos]);
+        //return response(['empleado'=>$empleado, 'ausencias'=>$ausencias,'empleados'=>$empleados,'diasTomados'=>$diasTomados]);
 
     }
 
@@ -111,8 +105,8 @@ class EmpleadoController extends Controller
     public function edit($id)
     {
         $empleados = Empleado::all();
-$empleado = Empleado::find($id);
-        return view('empleados.edit',['empleado'=>$empleado, "empleados"=>$empleados]);
+        $empleado = Empleado::find($id);
+        return view('empleados.edit', ['empleado' => $empleado, "empleados" => $empleados]);
     }
 
     /**
@@ -122,12 +116,12 @@ $empleado = Empleado::find($id);
      * @param  \App\Empleado  $empleado
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,  $id)
+    public function update(Request $request, $id)
     {
         $empleado = Empleado::find($id);
         $empleado->update($request->all());
         $empleados = Empleado::all();
-        return view('dashboard',['empleados'=>$empleados]);
+        return view('dashboard', ['empleados' => $empleados]);
     }
 
     /**
@@ -139,5 +133,10 @@ $empleado = Empleado::find($id);
     public function destroy(Empleado $empleado)
     {
         //
+    }
+
+    public function export()
+    {
+        return Excel::download(new EmpleadoExport, 'users.xlsx');
     }
 }
