@@ -137,6 +137,6 @@ class EmpleadoController extends Controller
 
     public function export()
     {
-        return Excel::download(new EmpleadoExport, 'users.xlsx');
+        return Excel::download(new EmpleadoExport, 'empleados_ddna.xlsx');
     }
 }
