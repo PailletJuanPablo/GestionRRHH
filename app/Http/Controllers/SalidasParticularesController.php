@@ -26,7 +26,7 @@ class SalidasParticularesController extends Controller
      */
     public function create()
     {
-        $empleados = Empleado::all();
+        $empleados = Empleado::orderBy('apellido_nombre')->get();
         return view("salidas.add",['empleados'=>$empleados]);
     }
 
@@ -39,7 +39,7 @@ class SalidasParticularesController extends Controller
     public function store(Request $request)
     {
         $horanuevo = SalidaParticular::create($request->all());
-        $empleados = Empleado::all();
+        $empleados = Empleado::orderBy('apellido_nombre')->get();
         $horas = SalidaParticular::all();
 
         return redirect()->route("salidas.index");
@@ -53,7 +53,7 @@ class SalidasParticularesController extends Controller
      */
     public function show($id)
     {
-    
+
 
     }
 
@@ -65,7 +65,7 @@ class SalidasParticularesController extends Controller
      */
     public function edit($id)
     {
-        $empleados = Empleado::all();
+        $empleados = Empleado::orderBy('apellido_nombre')->get();
         $empleado = Empleado::where("id",$id)->first();
         return view("salidas.addfromempleado",["empleado"=>$empleado,"empleados"=>$empleados]);
     }
@@ -79,7 +79,7 @@ class SalidasParticularesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $empleados = Empleado::all();
+        $empleados = Empleado::orderBy('apellido_nombre')->get();
         $salida = SalidaParticular::create($request->all());
         $salidas = SalidaParticular::with("empleado")->get();
         return view("salidas.index",["salidas"=>$salidas,"empleados"=>$empleados]);

@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class VacacionesEdicionController extends Controller
 {
     public function editar($id){
-        $empleados = Empleado::all();
+        $empleados = Empleado::orderBy('apellido_nombre')->get();
         $vacacion = DiasTomados::with("empleado")->find($id);
         return view("vacaciones.editar",["vacacion"=>$vacacion,"empleados"=>$empleados]);
 

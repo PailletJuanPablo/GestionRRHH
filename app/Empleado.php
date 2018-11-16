@@ -71,7 +71,6 @@ class Empleado extends Model
 
     public function diasDisponibles()
     {
-
         $años_antiguedad = $this->antiguedad();
         if ($años_antiguedad < 5) {
             return 15 + $this->dias_vacaciones_adicionales;
@@ -88,7 +87,6 @@ class Empleado extends Model
         if ($años_antiguedad >= 25) {
             return 35 + $this->dias_vacaciones_adicionales;
         };
-
     }
 
     public function horasExtras()
@@ -100,6 +98,11 @@ class Empleado extends Model
     public function salidasParticulares()
     {
         return $this->hasMany("App\SalidaParticular", 'empleados_id');
+    }
+
+    public function francosCompensatorios()
+    {
+        return $this->hasMany("App\Franco", 'empleados_id');
     }
 
 }

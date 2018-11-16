@@ -17,7 +17,7 @@ class HoraExtraController extends Controller
     {
 
         $horas = HoraExtra::all();
-        $empleados = Empleado::all();
+        $empleados = Empleado::orderBy('apellido_nombre')->get();
 
         return view("horasextras.list",['horas'=>$horas,'empleados'=>$empleados]);
 
@@ -31,7 +31,7 @@ class HoraExtraController extends Controller
     public function create()
     {
 
-        $empleados = Empleado::all();
+        $empleados = Empleado::orderBy('apellido_nombre')->get();
         return view("horasextras.add",['empleados'=>$empleados]);
 
     }
@@ -46,11 +46,11 @@ class HoraExtraController extends Controller
     {
 
         $horanuevo = HoraExtra::create($request->all());
-        $empleados = Empleado::all();
+        $empleados = Empleado::orderBy('apellido_nombre')->get();
         $horas = HoraExtra::all();
 
         return view("horasextras.list",['horas'=>$horas,'empleados'=>$empleados]);
-        
+
     }
 
     /**
@@ -72,7 +72,7 @@ class HoraExtraController extends Controller
      */
     public function edit( $id)
     {
-        $empleados = Empleado::all();
+        $empleados = Empleado::orderBy('apellido_nombre')->get();
         $empleado = Empleado::find($id);
         return view ("horasextras.edit",['empleados'=>$empleados,'empleado'=>$empleado]);
     }
@@ -87,7 +87,7 @@ class HoraExtraController extends Controller
     public function update(Request $request)
     {
         $horaExtra = HoraExtra::create($request->all());
-        $empleados = Empleado::all();
+        $empleados = Empleado::orderBy('apellido_nombre')->get();
         $horas = HoraExtra::all();
 
         return view("horasextras.list",['horas'=>$horas,'empleados'=>$empleados]);
@@ -101,7 +101,7 @@ class HoraExtraController extends Controller
      */
     public function destroy($id)
     {
-    
+
         HoraExtra::destroy($id);
         return redirect()->back()->withErrors(['Hora Extra Eliminada Correctamente']);
     }

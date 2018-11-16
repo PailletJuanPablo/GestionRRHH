@@ -15,7 +15,7 @@ class TipoAusenciaController extends Controller
      */
     public function index()
     {
-        $empleados = Empleado::all();
+        $empleados = Empleado::orderBy('apellido_nombre')->get();
         $tipos = TipoAusencia::all();
         return view('tiposausencia.list', ['tipos' => $tipos,'empleados'=>$empleados]);
     }
@@ -26,7 +26,7 @@ class TipoAusenciaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {        $empleados = Empleado::all();
+    {        $empleados = Empleado::orderBy('apellido_nombre')->get();
 
         return view('tiposausencia.add',['empleados'=>$empleados]);
     }
@@ -39,7 +39,7 @@ class TipoAusenciaController extends Controller
      */
     public function store(Request $request)
     {
-        $empleados = Empleado::all();
+        $empleados = Empleado::orderBy('apellido_nombre')->get();
 
         if ($request->has(['remunerada'])) {
             $tipoAusencia = TipoAusencia::create($request->all());
@@ -50,7 +50,7 @@ class TipoAusenciaController extends Controller
             $tipoAusencia = TipoAusencia::create($request->all());
            $tipos = TipoAusencia::all();
            return view('tiposausencia.list', ['tipos' => $tipos,'empleados'=>$empleados]);
-       
+
         }
 
     }

@@ -42,6 +42,7 @@ Route::get("francos", "FrancoController@francos")->name("francos");
 Route::get("addfranco", "FrancoController@agregarfrancos")->name("addfranco");
 Route::post("addfranco", "FrancoController@guardarfrancos")->name("addfranco");
 Route::get("francoid/{id}", "FrancoController@agregarfrancosid")->name("francoid");
+Route::post("eliminar_franco/{id}", "FrancoController@eliminar")->name("eliminar_franco");
 
 Route::get("editar_vacacion/{vacacion}", "VacacionesEdicionController@editar")->name("editar_vacacion");
 

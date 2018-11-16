@@ -39,7 +39,7 @@ class EmpleadoController extends Controller
     public function create()
     {
         $condiciones = Condicion::all();
-        $empleados = Empleado::all();
+        $empleados = Empleado::orderBy('apellido_nombre')->get();
         $this->$empleados = $empleados;
         return view('empleados.add', ['condiciones' => $condiciones, 'empleados' => $empleados]);
     }
@@ -54,7 +54,7 @@ class EmpleadoController extends Controller
     {
         $empleado = Empleado::create($request->all());
         $condiciones = Condicion::all();
-        $empleados = Empleado::all();
+        $empleados = Empleado::orderBy('apellido_nombre')->get();
         return view('empleados.add', ['condiciones' => $condiciones, 'empleados' => $empleados]);
     }
 
@@ -66,7 +66,7 @@ class EmpleadoController extends Controller
      */
     public function show($id)
     {
-        $empleados = Empleado::all();
+        $empleados = Empleado::orderBy('apellido_nombre')->get();
         $empleado = Empleado::find($id);
         $ausencias = Ausencia::with("tipo")->where('empleados_id', $id)->get();
         $ausencias = $ausencias->groupBy('tipo.nombre');
@@ -104,7 +104,7 @@ class EmpleadoController extends Controller
      */
     public function edit($id)
     {
-        $empleados = Empleado::all();
+        $empleados = Empleado::orderBy('apellido_nombre')->get();
         $empleado = Empleado::find($id);
         return view('empleados.edit', ['empleado' => $empleado, "empleados" => $empleados]);
     }
@@ -120,7 +120,7 @@ class EmpleadoController extends Controller
     {
         $empleado = Empleado::find($id);
         $empleado->update($request->all());
-        $empleados = Empleado::all();
+        $empleados = Empleado::orderBy('apellido_nombre')->get();
         return view('dashboard', ['empleados' => $empleados]);
     }
 

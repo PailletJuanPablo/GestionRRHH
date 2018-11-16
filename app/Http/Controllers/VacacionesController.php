@@ -15,7 +15,7 @@ class VacacionesController extends Controller
      */
     public function index()
     {
-        $empleados = Empleado::all();
+        $empleados = Empleado::orderBy('apellido_nombre')->get();
         $vacaciones = DiasTomados::with('empleado')->get();
         return view('vacaciones.index',['empleados'=>$empleados,'vacaciones'=>$vacaciones]);
         //return response(['empleados'=>$empleados,'vacaciones'=>$vacaciones]);
@@ -29,7 +29,7 @@ class VacacionesController extends Controller
      */
     public function create()
     {
-        $empleados = Empleado::all();
+        $empleados = Empleado::orderBy('apellido_nombre')->get();
         return view("vacaciones.add",['empleados'=>$empleados]);
     }
 
@@ -42,12 +42,12 @@ class VacacionesController extends Controller
     public function store(Request $request)
     {
 
-      
+
 
          //   $fecha_inicio = $request['fecha_inicio'];
           //  $fecha_finalizacion = $request['fecha_finalizacion'];
 
-            //echo $date1->diffInYears($date2);   
+            //echo $date1->diffInYears($date2);
           //  $cantidad_dias = ( Carbon::parse($fecha_finalizacion))->diffInDays(Carbon::parse($fecha_inicio));
 
 /*
@@ -61,12 +61,12 @@ class VacacionesController extends Controller
             $vacacion = DiasTomados::create($request->all());
            // return $vacacion;
 
-            $empleados = Empleado::all();
+            $empleados = Empleado::orderBy('apellido_nombre')->get();
         return view("dashboard",['empleados'=>$empleados]);
-        
+
 
        // calcularDias();
-        
+
     }
 
     /**
@@ -88,7 +88,7 @@ class VacacionesController extends Controller
      */
     public function edit($id)
     {
-        $empleados = Empleado::all();
+        $empleados = Empleado::orderBy('apellido_nombre')->get();
         $empleado = Empleado::find($id);
 
         return view('vacaciones/empleadoadd',["empleados"=>$empleados,"empleado"=>$empleado]);
@@ -106,7 +106,7 @@ class VacacionesController extends Controller
         $fecha_inicio = $request['fecha_inicio'];
         $fecha_finalizacion = $request['fecha_finalizacion'];
 
-        //echo $date1->diffInYears($date2);   
+        //echo $date1->diffInYears($date2);
         $cantidad_dias = ( Carbon::parse($fecha_finalizacion))->diffInDays(Carbon::parse($fecha_inicio));
         $vacacion = DiasTomados::create([
             'empleados_id'=>$id,
@@ -115,7 +115,7 @@ class VacacionesController extends Controller
             'cantidad_dias'=>$cantidad_dias,
             'observaciones'=>$request['observaciones']
         ]);
-        $empleados = Empleado::all();
+        $empleados = Empleado::orderBy('apellido_nombre')->get();
         return view("dashboard",['empleados'=>$empleados]);
     }
 

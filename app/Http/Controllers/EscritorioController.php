@@ -8,8 +8,8 @@ use App\Empleado;
 class EscritorioController extends Controller
 {
     public function index(){
-        
-        $empleados = Empleado::all();
+
+        $empleados = Empleado::orderBy('apellido_nombre')->get();
         return view("dashboard",['empleados'=>$empleados]);
     }
 }

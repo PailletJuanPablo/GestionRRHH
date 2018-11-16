@@ -11,20 +11,20 @@ use App\DiasTomados;
 class PdfController extends Controller
 {
     public function index($id){
-        $empleados = Empleado::all();
+        $empleados = Empleado::orderBy('apellido_nombre')->get();
     $empleado = Empleado::find($id);
       $ausencias = Ausencia::with("tipo")->where('empleados_id',$id)->get();
       $ausencias = $ausencias->groupBy('tipo.nombre');
       $diasTomados = DiasTomados::where('empleados_id',$id)->get();
   // return $diasTomados;
-   
+
      // return response(['empleado'=>$empleado, 'ausencias'=>$ausencias,'empleados'=>$empleados,'diasTomados'=>$diasTomados]);
      $pdf = PDF::loadView('pdf.individual', ['empleado'=>$empleado, 'ausencias'=>$ausencias,'empleados'=>$empleados,'diasTomados'=>$diasTomados]);
 
       return $pdf->stream('invoice.pdf');
-     
+
      //return view('pdf.individual', ['empleado'=>$empleado, 'ausencias'=>$ausencias,'empleados'=>$empleados,'diasTomados'=>$diasTomados]);
 
-      
+
     }
 }

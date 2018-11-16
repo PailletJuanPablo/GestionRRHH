@@ -19,7 +19,7 @@ class AsistenciaController extends Controller
      */
     public function index()
     {
-        
+
     }
 
     /**
@@ -62,8 +62,8 @@ class AsistenciaController extends Controller
      */
     public function edit(Request $request)
     {
-        
-        $empleados = Empleado::all();
+
+        $empleados = Empleado::orderBy('apellido_nombre')->get();
         //return $ausencia;
      if ($request->especial === "on") {
             $ausencia = Ausencia::create(

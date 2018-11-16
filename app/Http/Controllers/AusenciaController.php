@@ -22,7 +22,7 @@ class AusenciaController extends Controller
      */
     public function index()
     {
-        $empleados = Empleado::all();
+        $empleados = Empleado::orderBy('apellido_nombre')->get();
 
     $empleadosAusencias = Ausencia::with("empleado")->with("tipo")->get();
        // return $empleadosAusencias;
@@ -36,7 +36,7 @@ class AusenciaController extends Controller
      */
     public function create()
     {
-        $empleados = Empleado::all();
+        $empleados = Empleado::orderBy('apellido_nombre')->get();
         $tipos = TipoAusencia::all();
 
         return view('ausencias.add', ['empleados' => $empleados, 'tipos' => $tipos]);
@@ -51,7 +51,7 @@ class AusenciaController extends Controller
     public function store(Request $request)
     {
         // $ausencia = Ausencia::create($request->all());
-        $empleados = Empleado::all();
+        $empleados = Empleado::orderBy('apellido_nombre')->get();
         $tipos = TipoAusencia::all();
         //  return $ausencia;
 
@@ -106,7 +106,7 @@ class AusenciaController extends Controller
      */
     public function edit($id)
     {
-        $empleados = Empleado::all();
+        $empleados = Empleado::orderBy('apellido_nombre')->get();
         $empleado = Empleado::find($id);
         $tipos = TipoAusencia::all();
 
@@ -127,7 +127,7 @@ class AusenciaController extends Controller
 
         // $empleado->update($request->all());
 
-        $empleados = Empleado::all();
+        $empleados = Empleado::orderBy('apellido_nombre')->get();
         //return $ausencia;
      if ($request->especial === "on") {
             $ausencia = Ausencia::create(
