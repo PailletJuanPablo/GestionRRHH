@@ -33,6 +33,7 @@
                                 </thead>
                                 <tbody>
                                         @foreach($empleadosAusencias as $ausencia)
+                                        @if(!empty($ausencia->empleado))
         
                                         <tr>
                                             <td>{{$ausencia->empleado->apellido_nombre}}</td>
@@ -52,6 +53,7 @@
 
 
                                         </tr>
+                                        @endif
                                        @endforeach
                                 </tbody>
                             </table>
