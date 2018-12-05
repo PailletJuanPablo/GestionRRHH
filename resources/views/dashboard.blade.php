@@ -15,7 +15,9 @@
                 <div class="body">
                     <a target="_blank" href="{{ route('generar_excel') }}" class="btn btn-primary btn-block"> Exportar Excel </a>
                     <br>
-                 
+                    <a target="_blank" href="{{ route('reporte_horas') }}" class="btn bg-red btn-block"> Ver Reporte de Horas 2018 </a>
+                    <br>
+                    <br>
                     <table class="table responsive">
 
                         <thead>
