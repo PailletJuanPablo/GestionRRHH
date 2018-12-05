@@ -32,8 +32,6 @@
                 echo date("d-m-Y", strtotime($e->fecha_ingreso));
                     ?>
             </td>
-
-
         </tr>
         @endforeach
     </tbody>

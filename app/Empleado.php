@@ -91,7 +91,7 @@ class Empleado extends Model
 
     public function horasExtras()
     {
-        return $this->hasMany('App\HoraExtra');
+        return $this->hasMany('App\HoraExtra',"empleados_id");
 
     }
 
@@ -103,6 +103,14 @@ class Empleado extends Model
     public function francosCompensatorios()
     {
         return $this->hasMany("App\Franco", 'empleados_id');
+    }
+
+    public function getReportingTotal(){
+        $totalHorasExtras = $this->horasExtras()->count();
+        $totalSalidasParticulares = $this->salidasParticulares()->count();
+        $totalFrancos = $this->francosCompensatorios()->count() * 6;
+        return $totalHorasExtras + $totalSalidasParticulares - $totalFrancos;
+
     }
 
 }

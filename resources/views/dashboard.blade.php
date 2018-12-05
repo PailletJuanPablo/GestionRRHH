@@ -15,6 +15,7 @@
                 <div class="body">
                     <a target="_blank" href="{{ route('generar_excel') }}" class="btn btn-primary btn-block"> Exportar Excel </a>
                     <br>
+                 
                     <table class="table responsive">
 
                         <thead>

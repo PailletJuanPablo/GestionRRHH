@@ -51,3 +51,6 @@ Route::post("actualizar_vacaciones", "VacacionesEdicionController@actualizar")->
 Route::post("eliminar_vacaciones/{id}", "VacacionesEdicionController@eliminar")->name("eliminar_vacaciones");
 
 Route::get("generar_excel", "EmpleadoController@export")->name("generar_excel");
+Route::get("reporte_horas","ReportingController@getReporteHoras")->name("reporte_horas");
+Route::get("reporte_horas_pdf","ReportingController@getReporteHorasPdf")->name("reporte_horas_pdf");
+Route::get("reporte_horas_excel","ReportingController@getReporteHorasExcel")->name("reporte_horas_excel");
