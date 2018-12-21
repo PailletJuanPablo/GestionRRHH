@@ -20,8 +20,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($francos as $franco)
-
+                @foreach($francos as $franco) @if(!empty($franco->empleado))
                 <tr>
                     <td>{{$franco->empleado->apellido_nombre}}</td>
                     <td>{{$franco->fecha}}</td>
@@ -42,7 +41,7 @@
                     </td>
 
                 </tr>
-                @endforeach
+                @endif @endforeach
             </tbody>
         </table>
     </div>
